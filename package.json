@@ -1,0 +1,22 @@
+{
+  "name": "WebdriverCSS",
+  "version": "0.0.0",
+  "description": "Regression testing tool for WebdriverJS",
+  "author": "Christian Bromann <mail@christian-bromann.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "dependencies": {
+    "resemblejs": "~1.0.1"
+  },
+  "keywords": [
+    "webdriverjs",
+    "webdriver",
+    "phantomcss",
+    "regression",
+    "test",
+    "testing"
+  ]
+}
