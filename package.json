@@ -11,6 +11,7 @@
   "dependencies": {
     "resemble": "~1.0.3",
     "async": "~0.2.10",
+    "glob": "~3.2.9",
     "gm": "~1.14.2"
   },
   "devDependencies": {
