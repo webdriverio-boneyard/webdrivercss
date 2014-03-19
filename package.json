@@ -9,7 +9,12 @@
     "test": "npm test"
   },
   "dependencies": {
-    "resemblejs": "~1.0.1"
+    "resemblejs": "~1.0.1",
+    "async": "~0.2.10",
+    "gm": "~1.14.2"
+  },
+  "devDependencies": {
+    "webdriverjs": "~1.5.1"
   },
   "keywords": [
     "webdriverjs",
