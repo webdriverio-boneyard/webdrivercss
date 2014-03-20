@@ -9,14 +9,15 @@
     "test": "npm test"
   },
   "dependencies": {
-    "resemble": "~1.0.3",
-    "async": "~0.2.10",
-    "glob": "~3.2.9",
-    "gm": "~1.14.2"
+    "resemble": "^1.0.3",
+    "async": "^0.2.10",
+    "glob": "^3.2.9",
+    "gm": "^1.14.2"
   },
   "devDependencies": {
-    "webdriverjs": "~1.5.1",
-    "chai": "~1.9.1"
+    "webdriverjs": "^1.5.1",
+    "chai": "^1.9.1",
+    "fs-extra": "^0.8.1"
   },
   "keywords": [
     "webdriverjs",
