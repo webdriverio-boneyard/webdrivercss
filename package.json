@@ -15,7 +15,8 @@
     "gm": "~1.14.2"
   },
   "devDependencies": {
-    "webdriverjs": "~1.5.1"
+    "webdriverjs": "~1.5.1",
+    "chai": "~1.9.1"
   },
   "keywords": [
     "webdriverjs",

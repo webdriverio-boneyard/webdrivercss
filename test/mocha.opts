@@ -1,0 +1,5 @@
+test/bootstrap.js
+test/spec/*
+
+--timeout 1000000,
+--reporter spec

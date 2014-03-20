@@ -1,0 +1,66 @@
+describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
+
+    var plugin;
+
+    it('should not exist as command in WebdriverJS instance without initialization', function() {
+        should.not.exist(this.browser.webdrivercss);
+    });
+
+    it('should not have any created folder before initialization', function(done) {
+        fs.exists('webdrivercss', function(exists) {
+            exists.should.be.equal(false);
+            done();
+        });
+    });
+
+    it('should throw an error on initialization without passing WebdriverJS instance', function() {
+        expect(WebdriverCSS.init).to.throw(Error, 'A WebdriverJS instance is needed to initialise WebdriverCSS');
+    });
+
+    it('should be initialized without errors', function() {
+        WebdriverCSS.init(this.browser).should.not.throw;
+    })
+
+    it('should enhance WebdriverJS instance with "webdrivercss" command after initialization', function() {
+        should.exist(this.browser.webdrivercss);
+    });
+
+    it('should contain some default values', function() {
+        var plugin = WebdriverCSS.init(this.browser);
+        
+        expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
+        expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
+        expect(plugin).to.have.property('mismatchTolerance').to.equal(0.05);
+        expect(plugin).to.have.property('warning').to.have.length(0);
+
+    });
+
+    it('should contain some custom values', function() {
+        var plugin = WebdriverCSS.init(this.browser, {
+            screenshotRoot: '__screenshotRoot__',
+            failedComparisonsRoot: '__failedComparisonsRoot__',
+            mismatchTolerance: 50,
+            warning: ['not allowed to set warnings']
+        });
+        
+        expect(plugin).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
+        expect(plugin).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
+        expect(plugin).to.have.property('mismatchTolerance').to.equal(50);
+        expect(plugin).to.have.property('warning').to.have.length(0);
+    });
+
+    it('should have a created "screenshotRoot" folder after initialization', function(done) {
+        fs.exists('__screenshotRoot__', function(exist) {
+            exist.should.be.equal(true);
+            done();
+        });
+    });
+
+    it('should have a created "failedComparisonsRoot" folder after initialization', function(done) {
+        fs.exists('__failedComparisonsRoot__', function(exist) {
+            exist.should.be.equal(true);
+            done();
+        });
+    });
+
+})
