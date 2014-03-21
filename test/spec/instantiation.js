@@ -33,7 +33,6 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
         expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
         expect(plugin).to.have.property('misMatchTolerance').to.equal(0.05);
-        expect(plugin).to.have.property('warning').to.have.length(0);
 
     });
 
@@ -41,14 +40,12 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
         var plugin = WebdriverCSS.init(this.browser, {
             screenshotRoot: '__screenshotRoot__',
             failedComparisonsRoot: '__failedComparisonsRoot__',
-            misMatchTolerance: 50,
-            warning: ['not allowed to set warnings']
+            misMatchTolerance: 50
         });
         
         expect(plugin).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
         expect(plugin).to.have.property('misMatchTolerance').to.equal(50);
-        expect(plugin).to.have.property('warning').to.have.length(0);
     });
 
     it('should have a created "screenshotRoot" folder after initialization', function(done) {
