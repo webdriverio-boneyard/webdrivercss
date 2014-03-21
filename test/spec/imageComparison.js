@@ -7,6 +7,9 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
     }
 
     before(function(done) {
+
+        this.browser = WebdriverJS.remote(capabilities);
+
         // init plugin
         var plugin = WebdriverCSS.init(this.browser);
 
@@ -16,6 +19,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
             .windowHandleSize({ width: 800, height: 600 })
             .webdrivercss('comparisonTest', capturingData)
             .call(done);
+
     });
 
     describe('should take a screenshot of same area without any changes in it', function(done) {
@@ -129,5 +133,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
         });
 
     });
+
+    after(afterHook);
 
 });

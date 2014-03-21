@@ -1,6 +1,8 @@
 describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
 
-    var plugin;
+    before(function(done) {
+        this.browser = WebdriverJS.remote(capabilities).init(done);
+    });
 
     it('should not exist as command in WebdriverJS instance without initialization', function() {
         should.not.exist(this.browser.webdrivercss);
@@ -30,7 +32,7 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
         
         expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
-        expect(plugin).to.have.property('mismatchTolerance').to.equal(0.05);
+        expect(plugin).to.have.property('misMatchTolerance').to.equal(0.05);
         expect(plugin).to.have.property('warning').to.have.length(0);
 
     });
@@ -39,13 +41,13 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
         var plugin = WebdriverCSS.init(this.browser, {
             screenshotRoot: '__screenshotRoot__',
             failedComparisonsRoot: '__failedComparisonsRoot__',
-            mismatchTolerance: 50,
+            misMatchTolerance: 50,
             warning: ['not allowed to set warnings']
         });
         
         expect(plugin).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
-        expect(plugin).to.have.property('mismatchTolerance').to.equal(50);
+        expect(plugin).to.have.property('misMatchTolerance').to.equal(50);
         expect(plugin).to.have.property('warning').to.have.length(0);
     });
 
@@ -62,5 +64,7 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
             done();
         });
     });
+
+    after(afterHook);
 
 })

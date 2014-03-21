@@ -1,6 +1,9 @@
 describe('WebdriverCSS captures desired parts of a website as screenshot with specific dimension', function() {
 
     before(function(done) {
+
+        this.browser = WebdriverJS.remote(capabilities);
+
         // init plugin
         var plugin = WebdriverCSS.init(this.browser);
 
@@ -9,7 +12,8 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
             .url(testurl)
             .windowHandleSize({ width: 800, height: 600 })
             .call(done);
-    })
+
+    });
 
     describe('should do a screenshot of a whole website if nothing specified', function(done) {
 
@@ -207,5 +211,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
     });
+
+    after(afterHook);
 
 })

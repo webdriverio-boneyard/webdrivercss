@@ -19,11 +19,7 @@ failedComparisonsRootDefault = 'webdrivercss/diff';
 screenshotRootCustom = '__screenshotRoot__';
 failedComparisonsRootCustom = '__failedComparisonsRoot__';
 
-before(function() {
-    this.browser = WebdriverJS.remote(capabilities);
-});
-
-after(function(done) {
+afterHook = function(done) {
 
     var browser = this.browser;
 
@@ -38,4 +34,4 @@ after(function(done) {
         function(done) { fs.remove(screenshotRootCustom,done) }
     ], done);
 
-});
+};
