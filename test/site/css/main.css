@@ -133,3 +133,8 @@ h2 {
     padding: 1px 4px;
     width: auto;
 }
+.notLoaded {
+    visibility: hidden;
+    background-color: green;
+    width: 80px;
+}

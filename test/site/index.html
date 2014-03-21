@@ -153,6 +153,7 @@
         setTimeout(function() {
             var newElement = $('<div />').addClass('lateElem').html('Sorry, I\'m late!');
             $('body').append(newElement);
+            $('.notLoaded').css('visibility','visible');
         },3000);
 
         // Hammer(document.body).on('tap', function(e) {
@@ -165,6 +166,7 @@
         // })
 
     </script>
+    <div class="notLoaded">I need some time to load</div>
 
 </body>
 </html>
