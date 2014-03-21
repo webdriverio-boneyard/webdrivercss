@@ -24,16 +24,14 @@ before(function() {
 });
 
 after(function(done) {
-    
-    /**
-     * close browser
-     */
-    this.browser.end();
+
+    var browser = this.browser;
 
     /**
-     * clean up created directories
+     * close browser and clean up created directories
      */
     async.parallel([
+        function(done) { browser.end(done) },
         function(done) { fs.remove(failedComparisonsRootDefault,done) },
         function(done) { fs.remove(screenshotRootDefault,done) },
         function(done) { fs.remove(failedComparisonsRootCustom,done) },

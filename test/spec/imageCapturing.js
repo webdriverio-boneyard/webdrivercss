@@ -1,4 +1,4 @@
-describe.only('WebdriverCSS as plugin to do CSS regression testing', function() {
+describe('WebdriverCSS captures desired parts of a website as screenshot with specific dimension', function() {
 
     before(function(done) {
         // init plugin
@@ -54,8 +54,6 @@ describe.only('WebdriverCSS as plugin to do CSS regression testing', function() 
 
     describe('should do a screenshot with specific width and height values', function(done) {
 
-        var documentHeight = 0;
-
         before(function(done) {
             this.browser
                 .webdrivercss('testWithWidthHeightParameter', {
@@ -94,8 +92,6 @@ describe.only('WebdriverCSS as plugin to do CSS regression testing', function() 
     });
 
     describe('should do a screenshot of a given element', function(done) {
-
-        var documentHeight = 0;
 
         before(function(done) {
             this.browser
