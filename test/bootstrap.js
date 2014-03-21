@@ -5,6 +5,7 @@ WebdriverJS  = require('webdriverjs');
 WebdriverCSS = require('../index.js');
 fs = require('fs-extra');
 gm = require('gm');
+glob = require('glob');
 async  = require('async');
 should = require('chai').should();
 expect = require('chai').expect;
@@ -18,6 +19,7 @@ screenshotRootDefault = 'webdrivercss';
 failedComparisonsRootDefault = 'webdrivercss/diff';
 screenshotRootCustom = '__screenshotRoot__';
 failedComparisonsRootCustom = '__failedComparisonsRoot__';
+webdrivercssTimeoutTest = 'webdrivercssTimeoutTest';
 
 afterHook = function(done) {
 
@@ -31,7 +33,9 @@ afterHook = function(done) {
         function(done) { fs.remove(failedComparisonsRootDefault,done) },
         function(done) { fs.remove(screenshotRootDefault,done) },
         function(done) { fs.remove(failedComparisonsRootCustom,done) },
-        function(done) { fs.remove(screenshotRootCustom,done) }
+        function(done) { fs.remove(screenshotRootCustom,done) },
+        function(done) { fs.remove(webdrivercssTimeoutTest+'/diff',done) },
+        function(done) { fs.remove(webdrivercssTimeoutTest,done) }
     ], done);
 
 };
