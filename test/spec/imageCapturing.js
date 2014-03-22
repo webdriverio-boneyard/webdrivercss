@@ -5,7 +5,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         this.browser = WebdriverJS.remote(capabilities);
 
         // init plugin
-        var plugin = WebdriverCSS.init(this.browser);
+        WebdriverCSS.init(this.browser);
 
         this.browser
             .init()

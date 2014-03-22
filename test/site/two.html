@@ -15,9 +15,26 @@
         <a href="index.html">1</a>
     </header>
 
-    <div class="page">
+    <div class="page" style="width:200px; height:200px">
     	Second page
     </div>
+
+    <script src="components/jquery/jquery.min.js"></script>
+    <script>
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.round(Math.random() * 15)];
+        }
+        return color;
+    }
+
+    setInterval(function() {
+        $('.page').css('background-color',getRandomColor());
+    },100);
+    </script>
 
 </body>
 </html>

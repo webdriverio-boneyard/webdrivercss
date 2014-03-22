@@ -5,9 +5,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
         this.browser = WebdriverJS.remote(capabilities);
 
         // init plugin
-        var plugin = WebdriverCSS.init(this.browser,{
-            screenshotRoot: webdrivercssTimeoutTest
-        });
+        WebdriverCSS.init(this.browser);
 
         this.browser
             .init()
@@ -21,7 +19,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
     });
 
     it('if 4 screen widths are given, it should have taken 4 shots', function(done) {
-        glob('webdrivercssTimeoutTest/*.png', function(err,files) {
+        glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.should.have.length(4);
             done();
@@ -29,7 +27,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
     });
 
     it('screen width should be part of file name', function(done) {
-        glob('webdrivercssTimeoutTest/*.png', function(err,files) {
+        glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.forEach(function(file,i) {
                 file.match(/(.)+\.current\.\d+px.png/g).should.have.length(1);
@@ -39,11 +37,11 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
     });
 
     it('shots should have a specific width according to given screen width', function(done) {
-        glob('webdrivercssTimeoutTest/*.png', function(err,files) {
+        glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.forEach(function(file,i) {
                 var width = parseInt(file.match(/\d+/g)[0],10);
-                gm('webdrivercssTimeoutTest/screenWidthTest.current.' + width + 'px.png').size(function(err,size) {
+                gm('webdrivercss/screenWidthTest.current.' + width + 'px.png').size(function(err,size) {
                     should.not.exist(err);
                     size.width.should.be.equal(width);
 

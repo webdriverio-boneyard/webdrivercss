@@ -11,7 +11,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
         this.browser = WebdriverJS.remote(capabilities);
 
         // init plugin
-        var plugin = WebdriverCSS.init(this.browser);
+        WebdriverCSS.init(this.browser);
 
         this.browser
             .init()
