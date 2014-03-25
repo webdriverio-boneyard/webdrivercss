@@ -101,20 +101,6 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                     y1: 295
                 }]
             })
-            .webdrivercss('excludeMultipleXYParameters', {
-                elem: '.page',
-                exclude: [{
-                    x0: 0,
-                    x1: 115,
-                    y0: 60,
-                    y1: 295
-                }, {
-                    x0: 115,
-                    x1: 230,
-                    y0: 60,
-                    y1: 295
-                }]
-            })
             .call(function() {
                 glob('{webdrivercss/excludeMultipleXYParameters.*,webdrivercss/diff/excludeMultipleXYParameters.*}', function(err,files) {
                     should.not.exist(err);
@@ -125,5 +111,43 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 });
             });
     });
+
+    it('should exclude constantly changing content using multiple xy points', function(done) {
+        this.browser
+            .url(testurlTwo)
+            .webdrivercss('excludeMultipleXYPoints', {
+                elem: '.page',
+                exclude: [{
+                    x0: 0,
+                    y0: 60,
+                    x1: 115,
+                    y1: 60,
+                    x2: 115,
+                    y2: 295,
+                    x3: 0,
+                    y3: 115
+                }, {
+                    x0: 115,
+                    y0: 60,
+                    x1: 230,
+                    y1: 60,
+                    x2: 230,
+                    y2: 295,
+                    x3: 115,
+                    y3: 295
+                }]
+            })
+            .call(function() {
+                glob('{webdrivercss/excludeMultipleXYPoints.*,webdrivercss/diff/excludeMultipleXYPoints.*}', function(err,files) {
+                    should.not.exist(err);
+                    expect(files).to.contain('webdrivercss/excludeMultipleXYPoints.current.png');
+                    expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYPoints.diff.png');
+                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYPoints.new.png');
+                    done();
+                });
+            });
+    });
+
+    after(afterHook);
 
 });
