@@ -2,14 +2,14 @@
  * require dependencies
  */
 WebdriverJS  = require('webdriverjs');
-WebdriverCSS = process.env.JS_COV ? require('../lib-cov/webdrivercss.js') : require('../lib/webdrivercss.js');
+WebdriverCSS = require('../index.js');
 fs = require('fs-extra');
 gm = require('gm');
 glob = require('glob');
 async  = require('async');
 should = require('chai').should();
 expect = require('chai').expect;
-capabilities = {desiredCapabilities:{browserName: 'phantomjs'}};
+capabilities = {logLevel:'verbose',desiredCapabilities:{browserName: 'phantomjs'}};
 testurl = 'http://localhost:8080/test/site/index.html';
 testurlTwo = 'http://localhost:8080/test/site/two.html';
 

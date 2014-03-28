@@ -8,18 +8,12 @@ node_js:
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install imagemagick graphicsmagick libcairo2-dev jscoverage
+  - sudo apt-get install imagemagick graphicsmagick libcairo2-dev
 
 before_script:
   - "cd test/site && ../../node_modules/.bin/bower install && cd ../../"
   - "curl -O http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar"
-  - "java -jar selenium-server-standalone-2.41.0.jar > /dev/null 2>&1 &"
-  - "python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &"
-  - "jscoverage lib lib-cov"
+  - "java -jar selenium-server-standalone-2.41.0.jar -host 127.0.0.1 -port 4444 &"
+  - "python -m SimpleHTTPServer 8080 &"
 
-script: "JS_COV=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter > coverage.lcov.raw"
-
-after_script:
-  - sed "s#SF:#SF:lib/#g" coverage.lcov.raw > coverage.lcov
-  - cat coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
-  - rm coverage.lcov && rm coverage.lcov.raw
+script: "npm test"
