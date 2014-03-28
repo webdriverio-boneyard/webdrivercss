@@ -10,7 +10,7 @@ your application.
 
 #### Never loose track of unwanted CSS changes:
 
-![alt text](http://webdriverjs.christian-bromann.com/hero5.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/hero.png "Logo Title Text 1")
 
 
 ## How does it work?
@@ -203,7 +203,7 @@ client
 
 Will capture the following:
 
-![alt text](http://webdriverjs.christian-bromann.com/githubform.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/githubform.png "Logo Title Text 1")
 
 **Tip:** do right click on the desired element, then click on `Inspect Element`, then hover
 over the desired element in DevTools, open the context menu and click on `Copy CSS Path` to
@@ -223,7 +223,7 @@ client
         screenWidth: [1200]
     });
 ```
-![alt text](http://webdriverjs.christian-bromann.com/headerbar.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/headerbar.png "Logo Title Text 1")
 
 
 ### Exclude specific areas
@@ -244,7 +244,7 @@ client
         screenWidth: [1200]
     });
 ```
-![alt text](http://webdriverjs.christian-bromann.com/exclude.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/exclude.png "Logo Title Text 1")
 
 Instead of using a CSS3 selector you can also exclude areas by specifying xy values
 which form a rectangle.
@@ -281,7 +281,7 @@ client
         screenWidth: [1200]
     });
 ```
-![alt text](http://webdriverjs.christian-bromann.com/exclude2.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/exclude2.png "Logo Title Text 1")
 
 ### Keep an eye on mobile screen resolution
 
@@ -301,15 +301,15 @@ client
 
 This will capture the following image at once:
 
-![alt text](http://webdriverjs.christian-bromann.com/screenWidth.new.960px.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/header.new.960px.png "Logo Title Text 1")
 
 **file name:** header.960px.png
 
-![alt text](http://webdriverjs.christian-bromann.com/screenWidth.new.640px.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/header.new.640px.png "Logo Title Text 1")
 
 **file name:** header.640px.png
 
-![alt text](http://webdriverjs.christian-bromann.com/screenWidth.new.320px.png "Logo Title Text 1")
+![alt text](http://webdriver.io/images/webdrivercss/header.new.320px.png "Logo Title Text 1")
 
 **file name:** header.320px.png
 
@@ -320,4 +320,4 @@ maintain the existing coding style.
 
 ## Release History
 
-* 2013-03-27   v0.1.0   first release
+* 2013-03-28   v0.1.0   first release
