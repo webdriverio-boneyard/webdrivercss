@@ -2,7 +2,7 @@
  * require dependencies
  */
 WebdriverJS  = require('webdriverjs');
-WebdriverCSS = require('../index.js');
+WebdriverCSS = process.env.JS_COV ? require('../lib-cov/webdrivercss.js') : require('../lib/webdrivercss.js');
 fs = require('fs-extra');
 gm = require('gm');
 glob = require('glob');

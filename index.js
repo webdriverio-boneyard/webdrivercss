@@ -6,4 +6,4 @@
  * @license Licensed under the MIT license.
  */
 
-module.exports = require( (process.env['WEBDRIVERCSS_COV'] ? './lib-cov' : './lib') + '/webdrivercss.js');
+module.exports = require('./lib/webdrivercss.js');

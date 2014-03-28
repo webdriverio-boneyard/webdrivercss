@@ -17,4 +17,9 @@ before_script:
   - "python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &"
   - "jscoverage lib lib-cov"
 
-script: "WEBDRIVERCSS_COV=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+script: "JS_COV=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter > coverage.lcov.raw"
+
+after_script:
+  - sed "s#SF:#SF:$(PWD)/lib/#g" coverage.lcov.raw > coverage.lcov
+  - cat coverage.lcov | ./node_modules/coveralls/bin/coveralls.js
+  - rm coverage.lcov && rm coverage.lcov.raw
