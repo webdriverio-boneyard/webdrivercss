@@ -17,4 +17,4 @@ before_script:
   - "python -m SimpleHTTPServer 8080 > /dev/null 2>&1 &"
   - "jscoverage lib lib-cov"
 
-script: "WEBDRIVERCSS_COV=1 ./node_modules/.bin/mocha mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
+script: "WEBDRIVERCSS_COV=1 ./node_modules/.bin/mocha test -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js"
