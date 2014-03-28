@@ -1,5 +1,5 @@
 {
-  "name": "WebdriverCSS",
+  "name": "webdrivercss",
   "version": "0.0.0",
   "description": "Regression testing tool for WebdriverJS",
   "author": "Christian Bromann <mail@christian-bromann.com>",
@@ -7,6 +7,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/webdriverjs/webdrivercss.git"
   },
   "dependencies": {
     "resemble": "^1.0.3",
@@ -25,6 +29,9 @@
     "phantomcss",
     "regression",
     "test",
-    "testing"
+    "testing",
+    "css",
+    "responsive",
+    "design"
   ]
 }
