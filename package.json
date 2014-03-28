@@ -1,6 +1,6 @@
 {
   "name": "webdrivercss",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Regression testing tool for WebdriverJS",
   "author": "Christian Bromann <mail@christian-bromann.com>",
   "license": "MIT",
