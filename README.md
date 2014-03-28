@@ -239,8 +239,7 @@ client
     .webdrivercss('irgendwas', {
         exclude: '#theme_garden > div > section.carousel > div.carousel_slides,' + 
                  '#theme_garden > div > section:nth-child(3) > div.theme_scroll_wrap,' +
-                 '#theme_garden > div > section:nth-child(4) > div.theme_scroll_wrap,' +
-                 '#theme_garden > div > section:nth-child(5) > div.theme_scroll_wrap',
+                 '#theme_garden > div > section:nth-child(4) > div.theme_scroll_wrap',
         screenWidth: [1200]
     });
 ```
