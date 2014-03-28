@@ -9,7 +9,7 @@ glob = require('glob');
 async  = require('async');
 should = require('chai').should();
 expect = require('chai').expect;
-capabilities = process.env.TRAVIS_BUILD_NUMBER ? require('./conf/travis.js') : require('./conf/local.js');
+capabilities = {desiredCapabilities:{browserName: 'phantomjs'}};
 testurl = 'http://localhost:8080/test/site/index.html';
 testurlTwo = 'http://localhost:8080/test/site/two.html';
 
