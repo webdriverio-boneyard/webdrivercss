@@ -6,7 +6,7 @@ tool for [WebdriverJS](http://webdriver.io). It was inspired by [James Cryers](h
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
 initialization it enhances a WebdriverJS instance with an additional command called
 `webdrivercss` and enables the possibility to save screenshots of specific parts of
-your application.
+your application. 
 
 #### Never loose track of unwanted CSS changes:
 
