@@ -1,4 +1,4 @@
-WebdriverCSS
+WebdriverCSS [![Build Status](https://travis-ci.org/webdriverjs/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverjs/webdrivercss)
 ============
 
 __CSS regression testing in WebdriverJS__. This plugin is an automatic regression-testing

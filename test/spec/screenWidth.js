@@ -45,7 +45,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
                     should.not.exist(err);
 
                     // travisci made me do that -.-
-                    if(width === 321) width = 320;
+                    if(size.width === 321) size.width = 320;
 
                     size.width.should.be.equal(width);
 
