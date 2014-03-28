@@ -212,6 +212,47 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
 
     });
 
+    describe('should capture areas which are not within viewport', function() {
+
+        it('using elem option', function(done) {
+
+            this.browser
+                .url(testurlTwo)
+                .webdrivercss('notWithinViewportElem', {
+                    elem: '.iamdownhere'
+                })
+                .call(function() {
+                    gm.compare('webdrivercss/notWithinViewportElem.current.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
+                        should.not.exist(err);
+                        isEqual.should.be.equal(true);
+                        done();
+                    });
+                });
+
+        });
+
+        it('using xy coordinates', function(done) {
+
+            this.browser
+                .url(testurlTwo)
+                .webdrivercss('notWithinViewportXY', {
+                    x: 3000,
+                    y: 3295,
+                    width: 80,
+                    height: 40
+                })
+                .call(function() {
+                    gm.compare('webdrivercss/notWithinViewportXY.current.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
+                        should.not.exist(err);
+                        isEqual.should.be.equal(true);
+                        done();
+                    });
+                });
+
+        });
+
+    });
+
     after(afterHook);
 
 })
