@@ -6,7 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
+    "pretest": "jscoverage --no-instrument getPageInfo.js --no-instrument makeScreenshot.js lib lib-cov",
+    "test": "WEBDRIVERCSS_COVERAGE=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js",
     "prepublish": "npm prune"
   },
   "repository": {
@@ -26,7 +27,8 @@
     "webdriverjs": "^1.5.1",
     "chai": "^1.9.1",
     "fs-extra": "^0.8.1",
-    "mocha-lcov-reporter": "0.0.1"
+    "mocha-lcov-reporter": "^0.0.1",
+    "jscoverage": "^0.3.8"
   },
   "keywords": [
     "webdriverjs",
