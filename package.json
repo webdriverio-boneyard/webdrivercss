@@ -6,8 +6,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "pretest": "jscoverage --no-instrument getPageInfo.js --no-instrument makeScreenshot.js lib lib-cov",
-    "test": "WEBDRIVERCSS_COVERAGE=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js",
+    "pretest": "./node_modules/.bin/jscoverage ./lib ./lib-cov --no-instrument lib/getPageInfo.js --no-instrument lib/makeScreenshot.js",
+    "test": "./node_modules/.bin/mocha",
+    "posttest": "WEBDRIVERCSS_COVERAGE=1 ./node_modules/.bin/mocha -R mocha-lcov-reporter | ./node_modules/coveralls/bin/coveralls.js",
     "prepublish": "npm prune"
   },
   "repository": {
@@ -21,7 +22,6 @@
     "gm": "^1.14.2"
   },
   "devDependencies": {
-    "bower": "^1.3.1",
     "mocha": "^1.18.2",
     "coveralls": "~2.10.0",
     "webdriverjs": "^1.5.1",

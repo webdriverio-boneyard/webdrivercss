@@ -9,9 +9,13 @@ glob = require('glob');
 async  = require('async');
 should = require('chai').should();
 expect = require('chai').expect;
-capabilities = {logLevel:'verbose',desiredCapabilities:{browserName: 'phantomjs'}};
+capabilities = {desiredCapabilities:{browserName: 'phantomjs'}};
 testurl = 'http://localhost:8080/test/site/index.html';
 testurlTwo = 'http://localhost:8080/test/site/two.html';
+
+if(!process.env.WEBDRIVERCSS_COVERAGE) {
+    capabilities.logLevel = 'verbose';
+}
 
 /**
  * set some fix test variables
