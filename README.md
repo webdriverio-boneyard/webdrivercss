@@ -1,4 +1,4 @@
-WebdriverCSS [![Build Status](https://travis-ci.org/webdriverjs/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverjs/webdrivercss)
+WebdriverCSS [![Build Status](https://travis-ci.org/webdriverjs/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverjs/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverjs/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverjs/webdrivercss?branch=master)
 ============
 
 __CSS regression testing in WebdriverJS__. This plugin is an automatic regression-testing
@@ -320,3 +320,4 @@ maintain the existing coding style.
 ## Release History
 
 * 2013-03-28   v0.1.0   first release
+* 2013-04-07   v0.1.1   convert screenWidth parameters into numbers

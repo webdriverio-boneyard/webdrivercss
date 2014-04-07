@@ -1,12 +1,12 @@
 {
   "name": "webdrivercss",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Regression testing tool for WebdriverJS",
   "author": "Christian Bromann <mail@christian-bromann.com>",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R $MOCHA_REPORTERS",
+    "test": "./node_modules/.bin/mocha",
     "prepublish": "npm prune"
   },
   "repository": {

@@ -18,15 +18,13 @@ before_script:
   - "http-server -p 8080 &"
   - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov; fi"
 
-script: "npm test"
+script: "./node_modules/.bin/mocha -R mocha-istanbul"
 
 after_script:
   - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then cat lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi"
 
 env:
   matrix:
-    - MOCHA_REPORTERS: "spec"
-      WEBDRIVERCSS_COVERAGE: "0"
-    - MOCHA_REPORTERS: "mocha-istanbul"
-      ISTANBUL_REPORTERS: "lcov"
+    - WEBDRIVERCSS_COVERAGE: "0"
+    - ISTANBUL_REPORTERS: "lcov"
       WEBDRIVERCSS_COVERAGE: "1"
