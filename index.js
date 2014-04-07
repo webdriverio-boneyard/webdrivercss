@@ -6,4 +6,4 @@
  * @license Licensed under the MIT license.
  */
 
-module.exports = process.env.WEBDRIVERCSS_COVERAGE ? require('./lib-cov/webdrivercss.js') : require('./lib/webdrivercss.js');
+module.exports = process.env.WEBDRIVERCSS_COVERAGE === '1' ? require('./lib-cov/webdrivercss.js') : require('./lib/webdrivercss.js');
