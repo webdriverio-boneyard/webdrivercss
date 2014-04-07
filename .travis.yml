@@ -21,8 +21,8 @@ script: "npm test"
 
 env:
   matrix:
+    - MOCHA_REPORTERS: "spec"
+      WEBDRIVERCSS_COVERAGE: "0"
     - MOCHA_REPORTERS: "mocha-istanbul"
       ISTANBUL_REPORTERS: "lcov"
       WEBDRIVERCSS_COVERAGE: "1"
-    - MOCHA_REPORTERS: "spec"
-      WEBDRIVERCSS_COVERAGE: "0"

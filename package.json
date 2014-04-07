@@ -8,7 +8,7 @@
   "scripts": {
     "pretest": "if [ $WEBDRIVERCSS_COVERAGE == '1' ]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov; fi",
     "test": "./node_modules/.bin/mocha -R $MOCHA_REPORTERS",
-    "posttest": "if [ $WEBDRIVERCSS_COVERAGE == '1' ]; then cat lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi",
+    "posttest": "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then cat lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi",
     "prepublish": "npm prune"
   },
   "repository": {
