@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/webdriverjs/webdrivercss.git"
+    "url": "git://github.com/webdriverio/webdrivercss.git"
   },
   "dependencies": {
     "resemble": "^1.0.3",
@@ -26,7 +26,7 @@
   "devDependencies": {
     "mocha": "^1.18.2",
     "coveralls": "~2.10.0",
-    "webdriverjs": "^1.5.1",
+    "webdriverjs": "^1.7.1",
     "chai": "^1.9.1",
     "fs-extra": "^0.8.1",
     "mocha-istanbul": "^0.2.0",
@@ -34,6 +34,7 @@
   },
   "keywords": [
     "webdriverjs",
+    "webdriverio",
     "webdriver",
     "phantomcss",
     "regression",

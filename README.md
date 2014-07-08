@@ -1,4 +1,4 @@
-WebdriverCSS [![Build Status](https://travis-ci.org/webdriverjs/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverjs/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverjs/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverjs/webdrivercss?branch=master)
+WebdriverCSS [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
 ============
 
 __CSS regression testing in WebdriverJS__. This plugin is an automatic regression-testing
