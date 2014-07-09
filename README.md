@@ -105,10 +105,10 @@ var client = require('webdriverjs').remote({
 // initialise WebdriverCSS for `client` instance
 require('webdrivercss').init(client, {
     // example options
-    screenshotRoot: 'my-shots';
-    failedComparisonsRoot: 'diffs';
-    misMatchTolerance: 0.05;
-    screenWidth: [320,480,640,1024];
+    screenshotRoot: 'my-shots',
+    failedComparisonsRoot: 'diffs',
+    misMatchTolerance: 0.05,
+    screenWidth: [320,480,640,1024]
 });
 ```
 
