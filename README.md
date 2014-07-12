@@ -91,6 +91,16 @@ the `webdrivercss` command will be available only for this instance.
 * **screenWidth** `Numbers[]` ( default: *[]* )<br>
   if set all screenshots will be taken in different screen widths (e.g. for responsive design tests)
 
+The following options might be interesting if you want to syncronize your taken images with
+an external API. Checkout the [webdrivercss-adminpanel](https://github.com/webdriverio/webdrivercss-adminpanel)
+for more information on that.
+
+* **api** `String`
+  URL to API interface
+* **user** `String`
+  user name (only necessary if API requires Basic Authentification or oAuth)
+* **key** `String`
+  assigned user key (only necessary if API requires Basic Authentification or oAuth)
 
 ### Example
 
@@ -178,8 +188,6 @@ describe('my website should always look the same',function() {
 
     // ...
 ```
-
-
 
 ### Define specific areas
 
@@ -312,6 +320,58 @@ This will capture the following image at once:
 
 **file name:** header.320px.png
 
+### Synchronize your taken Images
+
+If you want to have your image repository available regardless where you run your tests, you can
+use an external API to store your shots. Therefor WebdriverCSS adds a `sync` function that downloads
+the repository as tarball and unzips it. After running your tests you can call this function again
+to zip the current state of your repository and upload it. Here is how this can look like:
+
+```js
+// create a WebdriverJS instance
+var client = require('webdriverjs').remote({
+    desiredCapabilities: {
+        browserName: 'phantomjs'
+    }
+});
+
+// initialise WebdriverCSS for `client` instance
+require('webdrivercss').init(client, {
+    screenshotRoot: 'myRegressionTests',
+
+    // Provide the API route
+    api: 'http://example.com/api/webdrivercss'
+});
+
+client
+    .init()
+    .sync() // downloads last uploaded tarball from http://example.com/api/webdrivercss/myRegressionTests.tar.gz
+    .url('http://example.com')
+
+    // do your regression tests
+    // ...
+
+    .sync() // zips your screenshot root and uploads it to http://example.com/api/webdrivercss via POST method
+    .end();
+```
+
+This allows you to run your regression tests with the same taken shots again and again, no matter where
+your tests are executed. It also makes distributed testing possible. Regressions tests can be done not only
+by you but everyone else who has access to the API.
+
+#### API Requirements
+
+To implement such API you have to provide two routes for synchronization:
+
+* [GET] /some/route/:file
+  Should response the uploaded tarball (for example: /some/root/myProject.tar.gz)
+  Content-Type: `application/octet-stream`
+* [POST] /some/route
+  Request contains zipped tarball that needs to be stored on the filesystem
+
+If you don't want to implement this by yourself, there is already such an application prepared, checkout
+the [webdriverio/webdrivercss-adminpanel](https://github.com/webdriverio/webdrivercss-adminpanel) project.
+It provides even a web interface for before/after comparison and stuff like this.
 
 ## Contributing
 Please fork, add specs, and send pull requests! In lieu of a formal styleguide, take care to
@@ -321,3 +381,4 @@ maintain the existing coding style.
 
 * 2013-03-28   v0.1.0   first release
 * 2013-04-07   v0.1.1   convert screenWidth parameters into numbers
+* 2013-07-12   v0.2.0   implemented shot synchronization with an external API
