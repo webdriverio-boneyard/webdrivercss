@@ -12,9 +12,9 @@ describe('WebdriverCSS should be able to', function() {
 
         // init plugin
         var plugin = WebdriverCSS.init(this.browser, {
-            api: 'http://127.0.0.1:8081/webdrivercss/api',
-            username: 'johndoe',
-            key: 'xyz'
+            api:  'http://127.0.0.1:8081/webdrivercss/api',
+            user: 'johndoe',
+            key:  'xyz'
         });
 
         this.browser
