@@ -30,7 +30,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
         glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.forEach(function(file,i) {
-                file.match(/(.)+\.current\.\d+px.png/g).should.have.length(1);
+                file.match(/(.)+\.\d+px\.current\.png/g).should.have.length(1);
             });
             done();
         });
@@ -41,7 +41,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
             should.not.exist(err);
             files.forEach(function(file,i) {
                 var width = parseInt(file.match(/\d+/g)[0],10);
-                gm('webdrivercss/screenWidthTest.current.' + width + 'px.png').size(function(err,size) {
+                gm('webdrivercss/screenWidthTest.' + width + 'px.current.png').size(function(err,size) {
                     should.not.exist(err);
 
                     // travisci made me do that -.-
