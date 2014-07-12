@@ -68,4 +68,4 @@ describe('WebdriverCSS should be able to', function() {
 
     after(afterHook);
 
-})
+});

@@ -4,7 +4,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
         elem: '.yellow',
         width: 550,
         height: 102
-    }
+    };
 
     before(function(done) {
 

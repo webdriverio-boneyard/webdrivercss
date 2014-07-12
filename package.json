@@ -24,13 +24,14 @@
     "tar.gz": "^0.1.1"
   },
   "devDependencies": {
-    "mocha": "^1.18.2",
-    "coveralls": "~2.10.0",
-    "webdriverjs": "^1.7.1",
     "chai": "^1.9.1",
+    "coveralls": "~2.10.0",
     "fs-extra": "^0.8.1",
+    "istanbul": "^0.2.7",
+    "mocha": "^1.18.2",
     "mocha-istanbul": "^0.2.0",
-    "istanbul": "^0.2.7"
+    "nock": "^0.42.1",
+    "webdriverjs": "^1.7.1"
   },
   "keywords": [
     "webdriverjs",

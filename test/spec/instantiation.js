@@ -1,3 +1,5 @@
+/*jshint -W030 */
+
 describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
 
     before(function(done) {
@@ -21,7 +23,7 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
 
     it('should be initialized without errors', function() {
         WebdriverCSS.init(this.browser).should.not.throw;
-    })
+    });
 
     it('should enhance WebdriverJS instance with "webdrivercss" command after initialization', function() {
         should.exist(this.browser.webdrivercss);
@@ -64,4 +66,4 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
 
     after(afterHook);
 
-})
+});
