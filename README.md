@@ -382,3 +382,4 @@ maintain the existing coding style.
 * 2013-03-28   v0.1.0   first release
 * 2013-04-07   v0.1.1   convert screenWidth parameters into numbers
 * 2013-07-12   v0.2.0   implemented shot synchronization with an external API
+* 2013-07-13   v0.2.1   fixed scrollTo bug
