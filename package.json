@@ -15,11 +15,12 @@
     "url": "git://github.com/webdriverio/webdrivercss.git"
   },
   "dependencies": {
-    "resemble": "^1.0.3",
     "async": "^0.2.10",
     "glob": "^3.2.9",
     "gm": "^1.14.2",
     "request": "^2.34.0",
+    "resemble": "^1.0.3",
+    "rimraf": "^2.2.8",
     "tar": "^0.1.19",
     "tar.gz": "^0.1.1"
   },
