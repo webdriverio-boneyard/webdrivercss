@@ -153,6 +153,9 @@ available:
   that queries one or multiple elements or you can define x and y values which stretch
   a rectangle or polygon
 
+* **hide** `String`<br>
+  hides all elements queried by given CSS selector (via `visibility: hidden`)
+
 * **excludeAfter** `Object`<br>
   exclude parts after taken screenshot
 
