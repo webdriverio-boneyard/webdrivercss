@@ -44,9 +44,8 @@ client
 
 WebdriverCSS uses GraphicsMagick/ImageMagick for image processing as well as [node-canvas](https://github.com/learnboost/node-canvas)
 for comparing and analyzing screenshots with [node-resemble](https://github.com/kpdecker/node-resemble).
-To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/)
-or [ImageMagick](http://www.imagemagick.org/) (one of them should be sufficient) and [Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages)
-preinstalled.
+To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [ImageMagick](http://www.imagemagick.org/)
+and [Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages) preinstalled.
 
 #### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
 ```sh
