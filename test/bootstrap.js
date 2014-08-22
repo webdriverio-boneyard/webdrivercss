@@ -1,7 +1,7 @@
 /**
  * require dependencies
  */
-WebdriverJS  = require('webdriverjs');
+WebdriverIO  = require('webdriverio');
 WebdriverCSS = require('../index.js');
 fs = require('fs-extra');
 gm = require('gm');

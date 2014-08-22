@@ -8,7 +8,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         WebdriverCSS.init(this.browser);

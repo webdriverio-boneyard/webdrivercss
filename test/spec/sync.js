@@ -8,7 +8,7 @@ describe('WebdriverCSS should be able to', function() {
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         var plugin = WebdriverCSS.init(this.browser, {
@@ -27,7 +27,7 @@ describe('WebdriverCSS should be able to', function() {
     describe('sync the image repository with an API', function() {
 
         it('throws an error if API isn\'t provided', function(done) {
-            var browser = WebdriverJS.remote(capabilities);
+            var browser = WebdriverIO.remote(capabilities);
             WebdriverCSS.init(browser);
 
             browser.init().sync(function(err) {
@@ -72,7 +72,7 @@ describe('WebdriverCSS should be able to', function() {
                     expect(madeRequest).to.be.true;
                 })
                 .call(done);
-        
+
         });
 
 

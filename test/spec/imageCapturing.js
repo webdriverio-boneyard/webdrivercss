@@ -2,7 +2,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         WebdriverCSS.init(this.browser);

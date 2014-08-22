@@ -2,7 +2,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         WebdriverCSS.init(this.browser);

@@ -1,12 +1,12 @@
 /*jshint -W030 */
 
-describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
+describe('WebdriverCSS plugin as WebdriverIO enhancement', function() {
 
     before(function(done) {
-        this.browser = WebdriverJS.remote(capabilities).init(done);
+        this.browser = WebdriverIO.remote(capabilities).init(done);
     });
 
-    it('should not exist as command in WebdriverJS instance without initialization', function() {
+    it('should not exist as command in WebdriverIO instance without initialization', function() {
         should.not.exist(this.browser.webdrivercss);
     });
 
@@ -17,21 +17,21 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
         });
     });
 
-    it('should throw an error on initialization without passing WebdriverJS instance', function() {
-        expect(WebdriverCSS.init).to.throw(Error, 'A WebdriverJS instance is needed to initialise WebdriverCSS');
+    it('should throw an error on initialization without passing WebdriverIO instance', function() {
+        expect(WebdriverCSS.init).to.throw(Error, 'A WebdriverIO instance is needed to initialise WebdriverCSS');
     });
 
     it('should be initialized without errors', function() {
         WebdriverCSS.init(this.browser).should.not.throw;
     });
 
-    it('should enhance WebdriverJS instance with "webdrivercss" command after initialization', function() {
+    it('should enhance WebdriverIO instance with "webdrivercss" command after initialization', function() {
         should.exist(this.browser.webdrivercss);
     });
 
     it('should contain some default values', function() {
         var plugin = WebdriverCSS.init(this.browser);
-        
+
         expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
         expect(plugin).to.have.property('misMatchTolerance').to.equal(0.05);
@@ -44,7 +44,7 @@ describe('WebdriverCSS plugin as WebdriverJS enhancement', function() {
             failedComparisonsRoot: '__failedComparisonsRoot__',
             misMatchTolerance: 50
         });
-        
+
         expect(plugin).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
         expect(plugin).to.have.property('misMatchTolerance').to.equal(50);

@@ -2,7 +2,7 @@ describe('WebdriverCSS should be able to', function() {
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         var plugin = WebdriverCSS.init(this.browser);

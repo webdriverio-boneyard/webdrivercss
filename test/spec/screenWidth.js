@@ -2,7 +2,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
 
     before(function(done) {
 
-        this.browser = WebdriverJS.remote(capabilities);
+        this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
         WebdriverCSS.init(this.browser);
