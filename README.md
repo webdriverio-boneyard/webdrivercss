@@ -6,7 +6,7 @@ tool for [WebdriverJS](http://webdriver.io). It was inspired by [James Cryers](h
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
 initialization it enhances a WebdriverJS instance with an additional command called
 `webdrivercss` and enables the possibility to save screenshots of specific parts of
-your application. 
+your application.
 
 #### Never loose track of unwanted CSS changes:
 
@@ -247,7 +247,7 @@ an example:
 client
     .url('http://tumblr.com/themes')
     .webdrivercss('irgendwas', {
-        exclude: '#theme_garden > div > section.carousel > div.carousel_slides,' + 
+        exclude: '#theme_garden > div > section.carousel > div.carousel_slides,' +
                  '#theme_garden > div > section:nth-child(3) > div.theme_scroll_wrap,' +
                  '#theme_garden > div > section:nth-child(4) > div.theme_scroll_wrap',
         screenWidth: [1200]
@@ -387,3 +387,4 @@ maintain the existing coding style.
 * 2013-07-13   v0.2.1   fixed scrollTo bug
 * 2013-07-15   v0.2.2   introduced `hide` option, remove local repository before download
 * 2013-07-17   v0.2.3   x-browser/driver-compatibility improvements
+* 2013-09-01   v0.3.0   make WebdriverCSS compatible with WebdriverIO
