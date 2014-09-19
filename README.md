@@ -155,9 +155,6 @@ available:
 * **hide** `String`<br>
   hides all elements queried by given CSS selector (via `visibility: hidden`)
 
-* **excludeAfter** `Object`<br>
-  exclude parts after taken screenshot
-
 * **timeout** `Numbers`<br>
   wait a specific amount of time (in `ms`) to take the screenshot (useful if you have to wait
   on loading content)
