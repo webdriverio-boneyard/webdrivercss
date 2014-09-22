@@ -1,10 +1,10 @@
 WebdriverCSS [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
 ============
 
-__CSS regression testing in WebdriverJS__. This plugin is an automatic regression-testing
-tool for [WebdriverJS](http://webdriver.io). It was inspired by [James Cryers](https://github.com/jamescryer)
+__CSS regression testing in WebdriverIO__. This plugin is an automatic regression-testing
+tool for [WebdriverIO](http://webdriver.io). It was inspired by [James Cryers](https://github.com/jamescryer)
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
-initialization it enhances a WebdriverJS instance with an additional command called
+initialization it enhances a WebdriverIO instance with an additional command called
 `webdrivercss` and enables the possibility to save screenshots of specific parts of
 your application.
 
@@ -16,7 +16,7 @@ your application.
 ## How does it work?
 
 1. Define areas within your application that should always look the same
-2. Use WebdriverJS and WebdriverCSS to write some E2E tests and take screenshots of these areas
+2. Use WebdriverIO and WebdriverCSS to write some E2E tests and take screenshots of these areas
 3. Continue working on your application or website
 4. After a while rerun the tests
 5. If desired areas differ from previous taken screenshots an image diff gets generated and you get notified in your tests
@@ -25,7 +25,7 @@ your application.
 ### Example
 
 ```js
-// init WebdriverJS
+// init WebdriverIO
 var client = require('webdriverjs').remote({desiredCapabilities:{browserName: 'chrome'}})
 // init WebdriverCSS
 require('webdrivercss').init(client);
@@ -33,10 +33,15 @@ require('webdrivercss').init(client);
 client
     .init()
     .url('http://example.com')
-    .webdrivercss('headerArea',{
-        elem: '#header',
-        screenWidth: [320,480,640]
-    })
+    .webdrivercss('startpage',[
+        {
+            name: 'header'
+            elem: '#header'
+        }, {
+            name: 'hero'
+            elem: '//*[@id="hero"]/div[2]'
+        }
+    ])
     .end();
 ```
 
@@ -44,15 +49,15 @@ client
 
 WebdriverCSS uses GraphicsMagick/ImageMagick for image processing as well as [node-canvas](https://github.com/learnboost/node-canvas)
 for comparing and analyzing screenshots with [node-resemble](https://github.com/kpdecker/node-resemble).
-To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [ImageMagick](http://www.imagemagick.org/)
-and [Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages) preinstalled.
+To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [ImageMagick](http://www.imagemagick.org/),
+[Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages) and of course Node.JS, NPM and Python preinstalled on your system.
 
 #### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
 ```sh
 $ brew install imagemagick graphicsmagick cairo
 ```
 
-#### Ubuntu using apt-get (not tested)
+#### Ubuntu using apt-get
 ```sh
 $ sudo apt-get install imagemagick libmagickcore-dev
 $ sudo apt-get install graphicsmagick
@@ -62,18 +67,18 @@ $ sudo apt-get install libcairo2-dev
 #### Windows
 
 Download and install executables for [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)/[GraphicsMagick](http://www.graphicsmagick.org/download.html)
-and [Cairo](http://cairographics.org/download/).
+and [Cairo](http://cairographics.org/download/). Please make sure you install the right binaries desired for your system (32bit vs 64bit).
 
 After these dependencies are installed you can install WebdriverCSS via NPM as usual:
 
 ```sh
 $ npm install webdrivercss
-$ npm install webdriverjs # if not already installed
+$ npm install webdriverio # if not already installed
 ```
 
 ## Setup
 
-To use this plugin just call the `init` function and pass the desired WebdriverJS instance
+To use this plugin just call the `init` function and pass the desired WebdriverIO instance
 as parameter. Additionally you can define some options to configure the plugin. After that
 the `webdrivercss` command will be available only for this instance.
 
@@ -104,8 +109,8 @@ for more information on that.
 ### Example
 
 ```js
-// create a WebdriverJS instance
-var client = require('webdriverjs').remote({
+// create a WebdriverIO instance
+var client = require('webdriverio').remote({
     desiredCapabilities: {
         browserName: 'phantomjs'
     }
@@ -123,17 +128,20 @@ require('webdrivercss').init(client, {
 
 ## Usage
 
-WebdriverCSS enhances an WebdriverJS instance with an command called `webdrivercss`
+WebdriverCSS enhances an WebdriverIO instance with an command called `webdrivercss`
 
-`client.webdrivercss('some_id', {options}, callback);`
+`client.webdrivercss('some_id', [{options}], callback);`
 
 It provides options that will help you to define your areas exactly and exclude parts
 that are unrelevant for design (e.g. content). Additionally it allows you to include
 the responsive design in your regression tests easily. The following options are
 available:
 
+* **name** `String` (required)<br>
+  name of the captured element
+
 * **elem** `String`<br>
-  only capture a specific DOM element
+  only capture a specific DOM element, you can use all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) here
 
 * **width** `Number`<br>
   define a fixed width for your screenshot
@@ -147,25 +155,20 @@ available:
 * **y** `Number`<br>
   take screenshot at an exact xy postion (requires width/height option)
 
-* **exclude** `String|Object`<br>
-  exclude frequently changing parts of your screenshot, you can either pass a CSS3 selector
-  that queries one or multiple elements or you can define x and y values which stretch
-  a rectangle or polygon
+* **exclude** `String[]|Object[]`<br>
+  exclude frequently changing parts of your screenshot, you can either pass all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html)
+  that queries one or multiple elements or you can define x and y values which stretch a rectangle or polygon
 
 * **hide** `String`<br>
-  hides all elements queried by given CSS selector (via `visibility: hidden`)
-
-* **timeout** `Numbers`<br>
-  wait a specific amount of time (in `ms`) to take the screenshot (useful if you have to wait
-  on loading content)
+  hides all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `visibility: hidden`)
 
 The following paragraphs will give you a more detailed insight how to use these options properly.
 
 ### Let your test fail when screenshots differ
 
 When using this plugin you can decide how to handle design breaks. You can either just work
-with the captured screenshots or you could even break your E2E test at this position. The
-following example shows how to handle design breaks within E2E tests:
+with the captured screenshots or you could even break your integration test at this position. The
+following example shows how to handle design breaks within integration tests:
 
 ```js
 describe('my website should always look the same',function() {
@@ -174,6 +177,7 @@ describe('my website should always look the same',function() {
         client
             .url('http://www.example.org')
             .webdrivercss('header', {
+                name: 'header',
                 elem: '#header'
             }, function(err,res) {
                 assert.equal(err, null);
@@ -191,19 +195,21 @@ describe('my website should always look the same',function() {
 ### Define specific areas
 
 The most powerful feature of WebdriverCSS is the possibility to define specific areas
-for your regression tests. It is highly recommended to not just make screenshots of the
-whole website. This can lead to many failing tests if someone breaks a tiny part of the
-design. Additionally your tests will run slower because the CPU has to deal with bigger
-images during the image comparison. It's better to have an own screenshot for each
-UI component.
+for your regression tests. When calling the command, WebdriverCSS will always take a screenshot of
+the whole website. After that it crops the image and creates a single copy for each element.
+If you want to capture multiple images on one page make sure you pass an array of options to
+the command. The screenshot capturing process can take a while depending on the document size
+of the website. Once you interact with the page by clicking on links, open layers or navigating
+to a new site you should call the `webdrivercss` command to take a new screenshot.
 
-You can either use a CSS3 selector to define a DOM element you want to capture or you can
+To query elements you want to capture you are able to choose all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) or you can
 specify x/y coordinates to cover a more exact area.
 
 ```js
 client
     .url('http://github.com')
     .webdrivercss('githubform', {
+        name: 'github-signup',
         elem: '#site-container > div.marketing-section.marketing-section-signup > div.container > form'
     });
 ```
@@ -223,6 +229,7 @@ pass a screenWidth option to make sure that your xy parameters map perfect on th
 client
     .url('http://github.com')
     .webdrivercss('headerbar', {
+        name: 'headerbar',
         x: 110,
         y: 15,
         width: 980,
@@ -243,22 +250,24 @@ an example:
 ```js
 client
     .url('http://tumblr.com/themes')
-    .webdrivercss('irgendwas', {
-        exclude: '#theme_garden > div > section.carousel > div.carousel_slides,' +
-                 '#theme_garden > div > section:nth-child(3) > div.theme_scroll_wrap,' +
-                 '#theme_garden > div > section:nth-child(4) > div.theme_scroll_wrap',
+    .webdrivercss('tumblrpage', {
+        name: 'startpage',
+        exclude: ['#theme_garden > div > section.carousel > div.carousel_slides',
+                 '//*[@id="theme_garden"]/div/section[3]',
+                 '//*[@id="theme_garden"]/div/section[4]']
         screenWidth: [1200]
     });
 ```
 ![alt text](http://webdriver.io/images/webdrivercss/exclude.png "Logo Title Text 1")
 
-Instead of using a CSS3 selector you can also exclude areas by specifying xy values
+Instead of using a selector strategy you can also exclude areas by specifying xy values
 which form a rectangle.
 
 ```js
 client
     .url('http://tumblr.com/themes')
-    .webdrivercss('irgendwas', {
+    .webdrivercss('tumblrpage', {
+        name: 'startpage',
         exclude: [{
             x0: 100, y0: 100,
             x1: 300, y1: 200
@@ -274,6 +283,7 @@ helpful if you like to exclude complex figures like:
 client
     .url('http://tumblr.com/themes')
     .webdrivercss('polygon', {
+        name: 'startpage',
         exclude: [{
             x0: 120, y0: 725,
             x1: 120, y1: 600,
@@ -299,7 +309,8 @@ with same width will be compared.
 ```js
 client
     .url('http://stephencaver.com/')
-    .webdrivercss('header', {
+    .webdrivercss('startpage', {
+        name: 'header',
         elem: '#masthead',
         screenWidth: [320,640,960]
     });
@@ -327,7 +338,7 @@ the repository as tarball and unzips it. After running your tests you can call t
 to zip the current state of your repository and upload it. Here is how this can look like:
 
 ```js
-// create a WebdriverJS instance
+// create a WebdriverIO instance
 var client = require('webdriverjs').remote({
     desiredCapabilities: {
         browserName: 'phantomjs'
