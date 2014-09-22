@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>two</title>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <header>
+        <h1>WebdriverIO Testpage</h1>
+        <a href="gestureTest.html">2</a>
+        <a href="index.html">1</a>
+    </header>
+
+    <div class="third" style="width:200px; height:200px; margin-top: 60px;">
+        third page
+    </div>
+
+    <script src="components/jquery/jquery.min.js"></script>
+    <script>
+
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.round(Math.random() * 15)];
+        }
+        return color;
+    }
+
+    setInterval(function() {
+        $('.third').css('background-color',getRandomColor());
+    },100);
+    </script>
+
+</body>
+</html>

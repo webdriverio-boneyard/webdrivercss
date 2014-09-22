@@ -66,7 +66,9 @@ describe('WebdriverCSS should be able to', function() {
                 });
 
             this.browser
-                .webdrivercss('testWithoutParameter')
+                .webdrivercss('testWithoutParameter', {
+                    name: 'test'
+                })
                 .sync()
                 .call(function() {
                     expect(madeRequest).to.be.true;

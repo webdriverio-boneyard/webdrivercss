@@ -21,7 +21,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
 
         before(function(done) {
             this.browser
-                .webdrivercss('testWithoutParameter')
+                .webdrivercss('testWithoutParameter', { name: 'withoutParams'})
                 .execute(function(){
                     return document.body.clientHeight;
                 }, function(err,res) {
@@ -31,14 +31,14 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should exist an image in the default image folder', function(done) {
-            fs.exists('webdrivercss/testWithoutParameter.current.png', function(exists) {
+            fs.exists('webdrivercss/testWithoutParameter.withoutParams.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should have the size of browser dimension', function(done) {
-            gm('webdrivercss/testWithoutParameter.current.png').size(function(err,size) {
+            gm('webdrivercss/testWithoutParameter.withoutParams.passed.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(800);
                 size.height.should.be.equal(documentHeight);
@@ -47,7 +47,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should equal to fixture image', function(done) {
-            gm.compare('webdrivercss/testWithoutParameter.current.png', 'test/fixtures/testWithoutParameter.current.png', function (err, isEqual, equality, raw) {
+            gm.compare('webdrivercss/testWithoutParameter.withoutParams.passed.png', 'test/fixtures/testWithoutParameter.current.png', function (err, isEqual, equality, raw) {
                 should.not.exist(err);
                 isEqual.should.be.equal(true);
                 done();
@@ -61,6 +61,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         before(function(done) {
             this.browser
                 .webdrivercss('testWithWidthHeightParameter', {
+                    name: '_',
                     x: 100,
                     y: 100,
                     width: 100,
@@ -70,14 +71,14 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should exist an image in the default image folder', function(done) {
-            fs.exists('webdrivercss/testWithWidthHeightParameter.current.png', function(exists) {
+            fs.exists('webdrivercss/testWithWidthHeightParameter._.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should have same size like given parameter', function(done) {
-            gm('webdrivercss/testWithWidthHeightParameter.current.png').size(function(err,size) {
+            gm('webdrivercss/testWithWidthHeightParameter._.passed.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(100);
                 size.height.should.be.equal(100);
@@ -86,7 +87,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should equal to fixture image', function(done) {
-            gm.compare('webdrivercss/testWithWidthHeightParameter.current.png', 'test/fixtures/testWithWidthHeightParameter.current.png', function (err, isEqual, equality, raw) {
+            gm.compare('webdrivercss/testWithWidthHeightParameter._.passed.png', 'test/fixtures/testWithWidthHeightParameter.current.png', function (err, isEqual, equality, raw) {
                 should.not.exist(err);
                 isEqual.should.be.equal(true);
                 done();
@@ -100,20 +101,21 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         before(function(done) {
             this.browser
                 .webdrivercss('testWithGivenElement', {
-                    elem: '.red'
+                    elem: '.red',
+                    name: '_'
                 })
                 .call(done);
         });
 
         it('should exist an image in the default image folder', function(done) {
-            fs.exists('webdrivercss/testWithGivenElement.current.png', function(exists) {
+            fs.exists('webdrivercss/testWithGivenElement._.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should have the size of given element', function(done) {
-            gm('webdrivercss/testWithGivenElement.current.png').size(function(err,size) {
+            gm('webdrivercss/testWithGivenElement._.passed.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(102);
                 size.height.should.be.equal(102);
@@ -122,7 +124,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should equal to fixture image', function(done) {
-            gm.compare('webdrivercss/testWithGivenElement.current.png', 'test/fixtures/testWithGivenElement.current.png', function (err, isEqual, equality, raw) {
+            gm.compare('webdrivercss/testWithGivenElement._.passed.png', 'test/fixtures/testWithGivenElement.current.png', function (err, isEqual, equality, raw) {
                 should.not.exist(err);
                 isEqual.should.be.equal(true);
                 done();
@@ -139,6 +141,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
             this.browser
                 .webdrivercss('testWithGivenElementAndWidthHeight', {
                     elem: '.yellow',
+                    name: '_',
                     width: 550,
                     height: 102
                 })
@@ -146,14 +149,14 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should exist an image in the default image folder', function(done) {
-            fs.exists('webdrivercss/testWithGivenElementAndWidthHeight.current.png', function(exists) {
+            fs.exists('webdrivercss/testWithGivenElementAndWidthHeight._.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should have the size of given element', function(done) {
-            gm('webdrivercss/testWithGivenElementAndWidthHeight.current.png').size(function(err,size) {
+            gm('webdrivercss/testWithGivenElementAndWidthHeight._.passed.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(550);
                 size.height.should.be.equal(102);
@@ -162,7 +165,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should equal to fixture image', function(done) {
-            gm.compare('webdrivercss/testWithGivenElementAndWidthHeight.current.png', 'test/fixtures/testWithGivenElementAndWidthHeight.current.png', function (err, isEqual, equality, raw) {
+            gm.compare('webdrivercss/testWithGivenElementAndWidthHeight._.passed.png', 'test/fixtures/testWithGivenElementAndWidthHeight.current.png', function (err, isEqual, equality, raw) {
                 should.not.exist(err);
                 isEqual.should.be.equal(true);
                 done();
@@ -181,20 +184,21 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
                     x: 15,
                     y: 15,
                     width: 230,
-                    height: 50
+                    height: 50,
+                    name: '_'
                 })
                 .call(done);
         });
 
         it('should exist an image in the default image folder', function(done) {
-            fs.exists('webdrivercss/testAtSpecificPosition.current.png', function(exists) {
+            fs.exists('webdrivercss/testAtSpecificPosition._.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should have same size like given parameter', function(done) {
-            gm('webdrivercss/testAtSpecificPosition.current.png').size(function(err,size) {
+            gm('webdrivercss/testAtSpecificPosition._.passed.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(230);
                 size.height.should.be.equal(50);
@@ -203,7 +207,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
         });
 
         it('should equal to fixture image', function(done) {
-            gm.compare('webdrivercss/testAtSpecificPosition.current.png', 'test/fixtures/testAtSpecificPosition.current.png', function (err, isEqual, equality, raw) {
+            gm.compare('webdrivercss/testAtSpecificPosition._.passed.png', 'test/fixtures/testAtSpecificPosition.current.png', function (err, isEqual, equality, raw) {
                 should.not.exist(err);
                 isEqual.should.be.equal(true);
                 done();
@@ -219,10 +223,11 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
             this.browser
                 .url(testurlTwo)
                 .webdrivercss('notWithinViewportElem', {
-                    elem: '.iamdownhere'
+                    elem: '.iamdownhere',
+                    name: '_'
                 })
                 .call(function() {
-                    gm.compare('webdrivercss/notWithinViewportElem.current.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
+                    gm.compare('webdrivercss/notWithinViewportElem._.passed.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
                         should.not.exist(err);
                         isEqual.should.be.equal(true);
                         done();
@@ -239,10 +244,11 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
                     x: 3000,
                     y: 3295,
                     width: 80,
-                    height: 40
+                    height: 40,
+                    name: '_'
                 })
                 .call(function() {
-                    gm.compare('webdrivercss/notWithinViewportXY.current.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
+                    gm.compare('webdrivercss/notWithinViewportXY._.passed.png', 'test/fixtures/notWithinViewport.png', function (err, isEqual, equality, raw) {
                         should.not.exist(err);
                         isEqual.should.be.equal(true);
                         done();

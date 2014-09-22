@@ -12,16 +12,22 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
             .url(testurl)
             .windowHandleSize({ width: 999, height: 999 })
             .webdrivercss('screenWidthTest', {
+                name: 'test',
                 screenWidth: [320,480,640,1024]
             })
             .call(done);
 
     });
 
-    it('if 4 screen widths are given, it should have taken 4 shots', function(done) {
+    /**
+     * 8 pictures get taken
+     * - 4 cropped images of the element for each screen resolution
+     * - 4 screenshots of the whole website for each screen resolution
+     */
+    it('if 4 screen widths are given, it should have taken 8 shots', function(done) {
         glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
-            files.should.have.length(4);
+            files.should.have.length(8);
             done();
         });
     });
@@ -30,7 +36,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
         glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.forEach(function(file,i) {
-                file.match(/(.)+\.\d+px\.current\.png/g).should.have.length(1);
+                file.match(/(.)+\.\d+px(\.passed)*\.png/g).should.have.length(1);
             });
             done();
         });
@@ -41,7 +47,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
             should.not.exist(err);
             files.forEach(function(file,i) {
                 var width = parseInt(file.match(/\d+/g)[0],10);
-                gm('webdrivercss/screenWidthTest.' + width + 'px.current.png').size(function(err,size) {
+                gm('webdrivercss/screenWidthTest.' + width + 'px.png').size(function(err,size) {
                     should.not.exist(err);
 
                     // travisci made me do that -.-

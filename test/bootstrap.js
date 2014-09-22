@@ -12,6 +12,7 @@ expect = require('chai').expect;
 capabilities = {logLevel: 'silent',desiredCapabilities:{browserName: 'phantomjs'}};
 testurl = 'http://localhost:8080/test/site/index.html';
 testurlTwo = 'http://localhost:8080/test/site/two.html';
+testurlThree = 'http://localhost:8080/test/site/three.html';
 
 if(!process.env.WEBDRIVERCSS_COVERAGE) {
     capabilities.logLevel = 'verbose';

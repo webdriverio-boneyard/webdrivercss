@@ -2,6 +2,7 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
 
     var capturingData = {
         elem: '.yellow',
+        name: 'test-component',
         width: 550,
         height: 102
     };
@@ -30,22 +31,22 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.current.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.current.png', function(exists) {
+        it('should exist an image (*.passed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should NOT exist an image (*.new.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.new.png', function(exists) {
+        it('should NOT exist an image (*.failed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });
         });
 
         it('should NOT exist an image (*.diff.png) in the default failed comparisons image folder', function(done) {
-            fs.exists('webdrivercss/diff/comparisonTest.diff.png', function(exists) {
+            fs.exists('webdrivercss/diff/comparisonTest.test-component.diff.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });
@@ -70,22 +71,22 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.current.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.current.png', function(exists) {
+        it('should exist an image (*.passed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should exist an image (*.new.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.new.png', function(exists) {
+        it('should exist an image (*.failed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should exist an image (*.diff.png) in the default failed comparisons image folder', function(done) {
-            fs.exists('webdrivercss/diff/comparisonTest.diff.png', function(exists) {
+            fs.exists('webdrivercss/diff/comparisonTest.test-component.diff.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
@@ -111,22 +112,22 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.current.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.current.png', function(exists) {
+        it('should exist an image (*.passed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should NOT exist an image (*.new.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.new.png', function(exists) {
+        it('should NOT exist an image (*.failed.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });
         });
 
         it('should NOT exist an image (*.diff.png) in the default failed comparisons image folder', function(done) {
-            fs.exists('webdrivercss/diff/comparisonTest.diff.png', function(exists) {
+            fs.exists('webdrivercss/diff/comparisonTest.test-component.diff.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });

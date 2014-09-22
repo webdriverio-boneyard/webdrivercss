@@ -16,15 +16,17 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     it('should generate diff image on constantly changing example content', function(done) {
         this.browser
-            .url(testurlTwo)
+            .url(testurlThree)
             .webdrivercss('constantlyChanging', {
-                elem: '.page'
+                elem: '.third',
+                name: '_'
             })
             .webdrivercss('constantlyChanging', {
-                elem: '.page'
+                elem: '.third',
+                name: '_'
             })
             .call(function() {
-                glob('webdrivercss/diff/constantlyChanging.diff.png', function(err,files) {
+                glob('webdrivercss/diff/constantlyChanging._.diff.png', function(err,files) {
                     should.not.exist(err);
                     files.should.have.length(1);
                     done();
@@ -34,17 +36,41 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     it('should exclude constantly changing content using CSS selectors', function(done) {
         this.browser
-            .url(testurlTwo)
+            .url(testurlThree)
             .webdrivercss('excludeUsingCssSelectors', {
-                elem: '.page',
-                exclude: '.page'
+                elem: '.third',
+                exclude: '.third',
+                name: '_'
             })
             .webdrivercss('excludeUsingCssSelectors', {
-                elem: '.page',
-                exclude: '.page'
+                elem: '.third',
+                exclude: '.third',
+                name: '_'
             })
             .call(function() {
-                glob('webdrivercss/diff/excludeUsingCssSelectors.diff.png', function(err,files) {
+                glob('webdrivercss/diff/excludeUsingCssSelectors._.diff.png', function(err,files) {
+                    should.not.exist(err);
+                    files.should.have.length(0);
+                    done();
+                });
+            });
+    });
+
+    it('should exclude constantly changing content using xPath selectors', function(done) {
+        this.browser
+            .url(testurlThree)
+            .webdrivercss('excludeUsingCssSelectors', {
+                elem: '//html/body/div',
+                exclude: '//html/body/div',
+                name: '_'
+            })
+            .webdrivercss('excludeUsingCssSelectors', {
+                elem: '//html/body/div',
+                exclude: '//html/body/div',
+                name: '_'
+            })
+            .call(function() {
+                glob('webdrivercss/diff/excludeUsingCssSelectors._.diff.png', function(err,files) {
                     should.not.exist(err);
                     files.should.have.length(0);
                     done();
@@ -54,31 +80,33 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     it('should exclude constantly changing content using single xy rectangle', function(done) {
         this.browser
-            .url(testurlTwo)
+            .url(testurlThree)
             .webdrivercss('excludeUsingXYParameters', {
-                elem: '.page',
+                elem: '.third',
                 exclude: {
                     x0: 0,
                     x1: 230,
                     y0: 60,
                     y1: 295
-                }
+                },
+                name: '_'
             })
             .webdrivercss('excludeUsingXYParameters', {
-                elem: '.page',
+                elem: '.third',
                 exclude: {
                     x0: 0,
                     x1: 230,
                     y0: 60,
                     y1: 295
-                }
+                },
+                name: '_'
             })
             .call(function() {
-                glob('{webdrivercss/excludeUsingXYParameters.*,webdrivercss/diff/excludeUsingXYParameters.*}', function(err,files) {
+                glob('{webdrivercss/excludeUsingXYParameters.*,webdrivercss/diff/excludeUsingXYParameters._.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeUsingXYParameters.current.png');
-                    expect(files).not.to.contain('webdrivercss/diff/excludeUsingXYParameters.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeUsingXYParameters.new.png');
+                    expect(files).to.contain('webdrivercss/excludeUsingXYParameters._.passed.png');
+                    expect(files).not.to.contain('webdrivercss/diff/excludeUsingXYParameters._.diff.png');
+                    expect(files).not.to.contain('webdrivercss/excludeUsingXYParameters._.failed.png');
                     done();
                 });
             });
@@ -86,9 +114,9 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     it('should exclude constantly changing content using multiple xy rectangles', function(done) {
         this.browser
-            .url(testurlTwo)
+            .url(testurlThree)
             .webdrivercss('excludeMultipleXYParameters', {
-                elem: '.page',
+                elem: '.third',
                 exclude: [{
                     x0: 0,
                     x1: 115,
@@ -99,14 +127,30 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                     x1: 230,
                     y0: 60,
                     y1: 295
-                }]
+                }],
+                name: '_'
+            })
+            .webdrivercss('excludeMultipleXYParameters', {
+                elem: '.third',
+                exclude: [{
+                    x0: 0,
+                    x1: 115,
+                    y0: 60,
+                    y1: 295
+                }, {
+                    x0: 115,
+                    x1: 230,
+                    y0: 60,
+                    y1: 295
+                }],
+                name: '_'
             })
             .call(function() {
                 glob('{webdrivercss/excludeMultipleXYParameters.*,webdrivercss/diff/excludeMultipleXYParameters.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeMultipleXYParameters.current.png');
-                    expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYParameters.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYParameters.new.png');
+                    expect(files).to.contain('webdrivercss/excludeMultipleXYParameters._.passed.png');
+                    expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYParameters._.diff.png');
+                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYParameters._.failed.png');
                     done();
                 });
             });
@@ -114,35 +158,59 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
 
     it('should exclude constantly changing content using multiple xy points', function(done) {
         this.browser
-            .url(testurlTwo)
+            .url(testurlThree)
             .webdrivercss('excludeMultipleXYPoints', {
-                elem: '.page',
+                elem: '.third',
                 exclude: [{
                     x0: 0,
                     y0: 60,
-                    x1: 115,
+                    x1: 100,
                     y1: 60,
-                    x2: 115,
-                    y2: 295,
+                    x2: 100,
+                    y2: 260,
                     x3: 0,
-                    y3: 115
+                    y3: 260
                 }, {
-                    x0: 115,
+                    x0: 100,
                     y0: 60,
-                    x1: 230,
+                    x1: 200,
                     y1: 60,
-                    x2: 230,
-                    y2: 295,
-                    x3: 115,
-                    y3: 295
-                }]
+                    x2: 200,
+                    y2: 260,
+                    x3: 100,
+                    y3: 260
+                }],
+                name: '_'
+            })
+            .webdrivercss('excludeMultipleXYPoints', {
+                elem: '.third',
+                exclude: [{
+                    x0: 0,
+                    y0: 60,
+                    x1: 100,
+                    y1: 60,
+                    x2: 100,
+                    y2: 260,
+                    x3: 0,
+                    y3: 260
+                }, {
+                    x0: 100,
+                    y0: 60,
+                    x1: 200,
+                    y1: 60,
+                    x2: 200,
+                    y2: 260,
+                    x3: 100,
+                    y3: 260
+                }],
+                name: '_'
             })
             .call(function() {
                 glob('{webdrivercss/excludeMultipleXYPoints.*,webdrivercss/diff/excludeMultipleXYPoints.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeMultipleXYPoints.current.png');
-                    expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYPoints.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYPoints.new.png');
+                    expect(files).to.contain('webdrivercss/excludeMultipleXYPoints._.passed.png');
+                    expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYPoints._.diff.png');
+                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYPoints._.failed.png');
                     done();
                 });
             });
