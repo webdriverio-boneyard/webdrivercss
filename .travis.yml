@@ -16,7 +16,7 @@ before_script:
   - "curl -O http://selenium-release.storage.googleapis.com/2.41/selenium-server-standalone-2.41.0.jar"
   - "java -jar selenium-server-standalone-2.41.0.jar -host 127.0.0.1 -port 4444 &"
   - "http-server -p 8080 &"
-  - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov; fi"
+  - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov && cp lib/documentScreenshot.js lib-cov && cp lib/viewportScreenshot.js lib-cov; fi"
 
 script: "npm run-script travis"
 
