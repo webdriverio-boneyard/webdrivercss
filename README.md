@@ -26,7 +26,7 @@ your application.
 
 ```js
 // init WebdriverIO
-var client = require('webdriverjs').remote({desiredCapabilities:{browserName: 'chrome'}})
+var client = require('webdriverio').remote({desiredCapabilities:{browserName: 'chrome'}})
 // init WebdriverCSS
 require('webdrivercss').init(client);
 
