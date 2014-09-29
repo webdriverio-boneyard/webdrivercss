@@ -26,7 +26,7 @@ your application.
 
 ```js
 // init WebdriverIO
-var client = require('webdriverjs').remote({desiredCapabilities:{browserName: 'chrome'}})
+var client = require('webdriverio').remote({desiredCapabilities:{browserName: 'chrome'}})
 // init WebdriverCSS
 require('webdrivercss').init(client);
 
@@ -339,7 +339,7 @@ to zip the current state of your repository and upload it. Here is how this can 
 
 ```js
 // create a WebdriverIO instance
-var client = require('webdriverjs').remote({
+var client = require('webdriverio').remote({
     desiredCapabilities: {
         browserName: 'phantomjs'
     }
