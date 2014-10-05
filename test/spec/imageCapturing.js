@@ -133,6 +133,30 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
 
     });
 
+    describe('should do a screenshot of multiple elements', function(done) {
+
+        before(function(done) {
+            this.browser
+                .webdrivercss('testWithMultipleElement', [
+                {
+                    elem: '.red',
+                    name: 'red'
+                }, {
+                    elem: '.green',
+                    name: 'green'
+                }])
+                .call(done);
+        });
+
+        it('should exist two images in the default image folder', function(done) {
+            fs.existsSync('webdrivercss/testWithMultipleElement.png').should.equal(true);
+            fs.existsSync('webdrivercss/testWithMultipleElement.red.passed.png').should.equal(true);
+            fs.existsSync('webdrivercss/testWithMultipleElement.green.passed.png').should.equal(true);
+            done();
+        });
+
+    });
+
     describe('should do a screenshot of a given element with given width/height', function(done) {
 
         var documentHeight = 0;
