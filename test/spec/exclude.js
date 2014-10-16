@@ -104,9 +104,9 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
             .call(function() {
                 glob('{webdrivercss/excludeUsingXYParameters.*,webdrivercss/diff/excludeUsingXYParameters._.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeUsingXYParameters._.passed.png');
+                    expect(files).to.contain('webdrivercss/excludeUsingXYParameters._.baseline.png');
                     expect(files).not.to.contain('webdrivercss/diff/excludeUsingXYParameters._.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeUsingXYParameters._.failed.png');
+                    expect(files).not.to.contain('webdrivercss/excludeUsingXYParameters._.regression.png');
                     done();
                 });
             });
@@ -148,9 +148,9 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
             .call(function() {
                 glob('{webdrivercss/excludeMultipleXYParameters.*,webdrivercss/diff/excludeMultipleXYParameters.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeMultipleXYParameters._.passed.png');
+                    expect(files).to.contain('webdrivercss/excludeMultipleXYParameters._.baseline.png');
                     expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYParameters._.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYParameters._.failed.png');
+                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYParameters._.regression.png');
                     done();
                 });
             });
@@ -208,9 +208,9 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
             .call(function() {
                 glob('{webdrivercss/excludeMultipleXYPoints.*,webdrivercss/diff/excludeMultipleXYPoints.*}', function(err,files) {
                     should.not.exist(err);
-                    expect(files).to.contain('webdrivercss/excludeMultipleXYPoints._.passed.png');
+                    expect(files).to.contain('webdrivercss/excludeMultipleXYPoints._.baseline.png');
                     expect(files).not.to.contain('webdrivercss/diff/excludeMultipleXYPoints._.diff.png');
-                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYPoints._.failed.png');
+                    expect(files).not.to.contain('webdrivercss/excludeMultipleXYPoints._.regression.png');
                     done();
                 });
             });

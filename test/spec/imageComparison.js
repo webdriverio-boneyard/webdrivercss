@@ -31,15 +31,15 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.passed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
+        it('should exist an image (*.baseline.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should NOT exist an image (*.failed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
+        it('should NOT exist an image (*.regression.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.regression.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });
@@ -71,15 +71,15 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.passed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
+        it('should exist an image (*.baseline.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should exist an image (*.failed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
+        it('should exist an image (*.regression.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.regression.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
@@ -112,15 +112,15 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 .call(done);
         });
 
-        it('should exist an image (*.passed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.passed.png', function(exists) {
+        it('should exist an image (*.baseline.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
-        it('should NOT exist an image (*.failed.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.failed.png', function(exists) {
+        it('should NOT exist an image (*.regression.png) in the default image folder', function(done) {
+            fs.exists('webdrivercss/comparisonTest.test-component.regression.png', function(exists) {
                 exists.should.equal(false);
                 done();
             });
