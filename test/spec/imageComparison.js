@@ -93,13 +93,13 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
         });
 
         it('should exist an *.diff image with same dimension', function() {
-            resultObject.isSameDimensions.should.be.a('boolean');
-            resultObject.isSameDimensions.should.equal(true);
+            resultObject['test-component'].isSameDimensions.should.be.a('boolean');
+            resultObject['test-component'].isSameDimensions.should.equal(true);
         });
 
         it('should have an mismatch percentage of 35.65%', function() {
-            resultObject.misMatchPercentage.should.be.a('number');
-            resultObject.misMatchPercentage.should.equal(35.65);
+            resultObject['test-component'].misMatchPercentage.should.be.a('number');
+            resultObject['test-component'].misMatchPercentage.should.equal(35.65);
         });
 
     });

@@ -41,7 +41,7 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
         glob('webdrivercss/*.png', function(err,files) {
             should.not.exist(err);
             files.forEach(function(file,i) {
-                file.match(/(.)+\.\d+px(\.passed)*\.png/g).should.have.length(1);
+                file.match(/(.)+\.\d+px(\.baseline)*\.png/g).should.have.length(1);
             });
             done();
         });
