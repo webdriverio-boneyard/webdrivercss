@@ -6,25 +6,23 @@ var fs = require('fs'),
 
 describe('WebdriverCSS should be able to', function() {
 
-    before(function(done) {
+    describe('sync the image repository with an external API', function() {
 
-        this.browser = WebdriverIO.remote(capabilities);
+        before(function(done) {
+            this.browser = WebdriverIO.remote(capabilities);
 
-        // init plugin
-        var plugin = WebdriverCSS.init(this.browser, {
-            api:  'http://127.0.0.1:8081/webdrivercss/api',
-            user: 'johndoe',
-            key:  'xyz'
+            // init plugin
+            var plugin = WebdriverCSS.init(this.browser, {
+                api:  'http://127.0.0.1:8081/webdrivercss/api',
+                user: 'johndoe',
+                key:  'xyz'
+            });
+
+            this.browser
+                .init()
+                .url(testurl)
+                .call(done);
         });
-
-        this.browser
-            .init()
-            .url(testurl)
-            .call(done);
-
-    });
-
-    describe('sync the image repository with an API', function() {
 
         it('throws an error if API isn\'t provided', function(done) {
             var browser = WebdriverIO.remote(capabilities);
@@ -77,9 +75,95 @@ describe('WebdriverCSS should be able to', function() {
 
         });
 
-
+        after(afterHook);
     });
 
-    after(afterHook);
 
+    describe('sync images with applitools eyes', function() {
+        var key = 'ABCDEFG12345',
+            fakeSessionId = 123456789012345,
+            applitoolsHost = 'https://eyessdk.applitools.com',
+            isSessionInitiated = false,
+            hasSyncedImage = false,
+            isSessionClosed = false;
+
+        var headers = {
+            'Authorization': 'Basic ' + new Buffer(':' + key).toString('base64'),
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+
+        /**
+         * mock session initiatlization
+         */
+        nock(applitoolsHost, {reqheaders: headers})
+            .post('/api/sessions/running')
+            .reply(200, function(uri, requestBody) {
+                isSessionInitiated = true;
+                return {
+                    'id': fakeSessionId,
+                    'url': 'https://eyes.applitools.com/app/sessions/' + fakeSessionId
+                };
+            });
+
+        /**
+         * mock image sync
+         */
+        nock(applitoolsHost, {reqheaders: headers})
+            .post('/api/sessions/running/' + fakeSessionId)
+            .reply(200, function(uri, requestBody) {
+                hasSyncedImage = true;
+                return { 'asExpected' : true };
+            });
+
+        /**
+         * mock session end
+         */
+        nock(applitoolsHost, {reqheaders: headers})
+            .delete('/api/sessions/running/' + fakeSessionId)
+            .reply(200, function(uri, requestBody) {
+                isSessionClosed = true;
+                return {'steps':1,'matches':1,'mismatches':0,'missing':0};
+            });
+
+        before(function(done) {
+            this.browser = WebdriverIO.remote(capabilities);
+
+            // init plugin
+            var plugin = WebdriverCSS.init(this.browser, {
+                key:  key
+            });
+
+            this.browser
+                .init('apptest', 'scenariotest')
+                .url(testurl)
+                .call(done);
+        });
+
+        it('should throw an error if no app id is provided', function() {
+            expect(isSessionInitiated).to.be.true;
+        });
+
+        it('should sync images with applitools eyes', function(done) {
+            expect(hasSyncedImage).to.be.false;
+            this.browser
+                .webdrivercss('applitoolstest')
+                .call(function() {
+                    expect(hasSyncedImage).to.be.true;
+                    done();
+                });
+        });
+
+        it('should end applitools session', function(done) {
+            expect(isSessionClosed).to.be.false;
+            this.browser
+                .end()
+                .call(function() {
+                    expect(isSessionClosed).to.be.true;
+                    done();
+                });
+        });
+
+        after(afterHook);
+    });
 });
