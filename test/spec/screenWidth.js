@@ -1,7 +1,7 @@
 describe('WebdriverCSS captures shots with different screen widths', function() {
+    var resultObject;
 
     before(function(done) {
-
         this.browser = WebdriverIO.remote(capabilities);
 
         // init plugin
@@ -19,7 +19,10 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
                     name: 'test_two',
                     screenWidth: [444,666]
                 }
-            ])
+            ], function(err, res) {
+                should.not.exist(err);
+                resultObject = res;
+            })
             .call(done);
 
     });
@@ -74,6 +77,20 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
                 res.value.height.should.be.equal(999);
             })
             .call(done);
+    });
+
+    describe('returns a result object with proper test results', function() {
+
+        it('should contain results of both elements', function() {
+            expect(resultObject.test).to.exist;
+            expect(resultObject.test_two).to.exist;
+        });
+
+        it('should contain result for each screenresolution', function() {
+            expect(resultObject.test).to.have.length(4);
+            expect(resultObject.test_two).to.have.length(2);
+        })
+
     });
 
     after(afterHook);
