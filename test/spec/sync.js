@@ -135,33 +135,23 @@ describe('WebdriverCSS should be able to', function() {
             });
 
             this.browser
-                .init('apptest', 'scenariotest')
+                .init()
                 .url(testurl)
-                .call(done);
+                .webdrivercss('applitoolstest', {
+                    name: 'page'
+                }, done);
         });
 
         it('should throw an error if no app id is provided', function() {
             expect(isSessionInitiated).to.be.true;
         });
 
-        it('should sync images with applitools eyes', function(done) {
-            expect(hasSyncedImage).to.be.false;
-            this.browser
-                .webdrivercss('applitoolstest')
-                .call(function() {
-                    expect(hasSyncedImage).to.be.true;
-                    done();
-                });
+        it('should sync images with applitools eyes', function() {
+            expect(hasSyncedImage).to.be.true;
         });
 
-        it('should end applitools session', function(done) {
-            expect(isSessionClosed).to.be.false;
-            this.browser
-                .end()
-                .call(function() {
-                    expect(isSessionClosed).to.be.true;
-                    done();
-                });
+        it('should end applitools session', function() {
+            expect(isSessionClosed).to.be.true;
         });
 
         after(afterHook);
