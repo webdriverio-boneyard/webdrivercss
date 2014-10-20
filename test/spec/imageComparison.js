@@ -18,21 +18,24 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
             .init()
             .url(testurl)
             .windowHandleSize({ width: 800, height: 600 })
-            .webdrivercss('comparisonTest', capturingData)
             .call(done);
 
     });
 
     describe('should take a screenshot of same area without any changes in it', function(done) {
+        var resultObject;
 
         before(function(done) {
             this.browser
-                .webdrivercss('comparisonTest', capturingData)
+                .webdrivercss('comparisonTest', capturingData, function(err, res) {
+                    should.not.exist(err);
+                    resultObject = res[capturingData.name][0];
+                })
                 .call(done);
         });
 
         it('should exist an image (*.baseline.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
+            fs.exists(resultObject.baselinePath, function(exists) {
                 exists.should.equal(true);
                 done();
             });
@@ -52,10 +55,16 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
             });
         });
 
+        it('should return a proper result object', function() {
+            resultObject.misMatchPercentage.should.equal(0);
+            resultObject.isExactSameImage.should.equal(true);
+            resultObject.isSameDimensions.should.equal(true);
+            resultObject.isWithinMisMatchTolerance.should.equal(true);
+        });
+
     });
 
     describe('should change something within given area to do an image diff', function() {
-
         var resultObject = {};
 
         before(function(done) {
@@ -66,54 +75,60 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 },[])
                 .webdrivercss('comparisonTest', capturingData, function(err,res) {
                     should.not.exist(err);
-                    resultObject = res;
+                    resultObject = res[capturingData.name][0];
                 })
                 .call(done);
         });
 
         it('should exist an image (*.baseline.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
+            fs.exists(resultObject.baselinePath, function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should exist an image (*.regression.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.regression.png', function(exists) {
+            fs.exists(resultObject.regressionPath, function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should exist an image (*.diff.png) in the default failed comparisons image folder', function(done) {
-            fs.exists('webdrivercss/diff/comparisonTest.test-component.diff.png', function(exists) {
+            fs.exists(resultObject.diffPath, function(exists) {
                 exists.should.equal(true);
                 done();
             });
         });
 
         it('should exist an *.diff image with same dimension', function() {
-            resultObject['test-component'].isSameDimensions.should.be.a('boolean');
-            resultObject['test-component'].isSameDimensions.should.equal(true);
+            resultObject.isSameDimensions.should.be.a('boolean');
+            resultObject.isSameDimensions.should.equal(true);
         });
 
         it('should have an mismatch percentage of 35.65%', function() {
-            resultObject['test-component'].misMatchPercentage.should.be.a('number');
-            resultObject['test-component'].misMatchPercentage.should.equal(35.65);
+            resultObject.misMatchPercentage.should.be.a('number');
+            resultObject.misMatchPercentage.should.equal(35.65);
+            resultObject.isExactSameImage.should.equal(false);
+            resultObject.isWithinMisMatchTolerance.should.equal(false);
         });
 
     });
 
     describe('should take a screenshot of same area without any changes in it again', function(done) {
+        var resultObject = {};
 
         before(function(done) {
             this.browser
-                .webdrivercss('comparisonTest', capturingData)
+                .webdrivercss('comparisonTest', capturingData, function(err,res) {
+                    should.not.exist(err);
+                    resultObject = res[capturingData.name][0];
+                })
                 .call(done);
         });
 
         it('should exist an image (*.baseline.png) in the default image folder', function(done) {
-            fs.exists('webdrivercss/comparisonTest.test-component.baseline.png', function(exists) {
+            fs.exists(resultObject.baselinePath, function(exists) {
                 exists.should.equal(true);
                 done();
             });
@@ -131,6 +146,13 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
                 exists.should.equal(false);
                 done();
             });
+        });
+
+        it('should return a proper result object', function() {
+            resultObject.misMatchPercentage.should.equal(0);
+            resultObject.isExactSameImage.should.equal(true);
+            resultObject.isSameDimensions.should.equal(true);
+            resultObject.isWithinMisMatchTolerance.should.equal(true);
         });
 
     });
