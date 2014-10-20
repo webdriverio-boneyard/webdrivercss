@@ -1,7 +1,7 @@
 WebdriverCSS [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
 ============
 
-__CSS regression testing in WebdriverIO__. This plugin is an automatic regression-testing
+__CSS regression testing in WebdriverIO__. This plugin is an automatic visual regression-testing
 tool for [WebdriverIO](http://webdriver.io). It was inspired by [James Cryers](https://github.com/jamescryer)
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
 initialization it enhances a WebdriverIO instance with an additional command called
@@ -25,6 +25,8 @@ your application.
 ### Example
 
 ```js
+var assert = require('assert');
+
 // init WebdriverIO
 var client = require('webdriverio').remote({desiredCapabilities:{browserName: 'chrome'}})
 // init WebdriverCSS
@@ -41,7 +43,11 @@ client
             name: 'hero'
             elem: '//*[@id="hero"]/div[2]'
         }
-    ])
+    ], function(err, res) {
+        assert.ifError(err);
+        assert.ok(res.header[0].isWithinMisMatchTolerance);
+        assert.ok(res.hero[0].isWithinMisMatchTolerance);
+    })
     .end();
 ```
 
@@ -95,16 +101,9 @@ the `webdrivercss` command will be available only for this instance.
 * **screenWidth** `Numbers[]` ( default: *[]* )<br>
   if set all screenshots will be taken in different screen widths (e.g. for responsive design tests)
 
-The following options might be interesting if you want to syncronize your taken images with
-an external API. Checkout the [webdrivercss-adminpanel](https://github.com/webdriverio/webdrivercss-adminpanel)
-for more information on that.
+* **updateBaseline** `Boolean` ( default: *false* )<br>
+  updates baseline images if comparison keeps failing
 
-* **api** `String`
-  URL to API interface
-* **user** `String`
-  user name (only necessary if API requires Basic Authentification or oAuth)
-* **key** `String`
-  assigned user key (only necessary if API requires Basic Authentification or oAuth)
 
 ### Example
 
@@ -180,17 +179,65 @@ describe('my website should always look the same',function() {
                 name: 'header',
                 elem: '#header'
             }, function(err,res) {
-                assert.equal(err, null);
+                assert.ifError(err);
 
-                // this will break the test if screenshot differ more then 5% from
-                // the previous taken image
-                assert.equal(res.misMatchPercentage < 5, true);
+                // this will break the test if screenshot is not within the mismatch tolerance
+                assert.ok(res.isWithinMisMatchTolerance);
             })
             .call(done);
     });
 
     // ...
 ```
+
+### [Applitools Eyes](http://applitools.com) Support
+
+![Applitools Eyes](http://pravdam.biz/clientblogs/applitools2/applitools-new-logo.png)
+
+[Applitools Eyes](http://applitools.com) provides a comprehensive automated UI validation with really
+smart alghorythm that are unique in this area. As a cloud service it makes your regression tests available
+everywhere and accessible to everyone in your team.
+
+### Applitools Eyes Example
+
+```js
+// create a WebdriverIO instance
+var client = require('webdriverio').remote({
+    desiredCapabilities: {
+        browserName: 'chrome'
+    }
+});
+
+// initialise WebdriverCSS for `client` instance
+require('webdrivercss').init(client, {
+    key: '<your personal API key>'
+});
+
+client
+    .init()
+    .url('http://example.com')
+    .webdrivercss('<app id or name>', {
+        name: '<scenario id or name>',
+        elem: '#someElement',
+        // ...
+    }, function(err, res) {
+        assert.ifError(err);
+        assert.equal(res.steps, res.strictMatches)
+    })
+    .end();
+```
+
+The following options might be interesting if you want to syncronize your taken images with
+an external API. Checkout the [webdrivercss-adminpanel](https://github.com/webdriverio/webdrivercss-adminpanel)
+for more information on that.
+
+* **api** `String`
+  URL to API interface
+* **user** `String`
+  user name (only necessary if API requires Basic Authentification or oAuth)
+* **key** `String`
+  assigned user key (only necessary if API requires Basic Authentification or oAuth)
+
 
 ### Define specific areas
 
