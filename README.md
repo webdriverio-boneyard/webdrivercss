@@ -82,6 +82,14 @@ $ npm install webdrivercss
 $ npm install webdriverio # if not already installed
 ```
 
+Make sure your `PKG_CONFIG_PATH` is set in your environment otherwise you won't be able to install `canvas`
+probably. That actual path to your pkgconfig might differ though.
+
+```sh
+# make sure that this path exists on your machine
+$ export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+```
+
 ## Setup
 
 To use this plugin just call the `init` function and pass the desired WebdriverIO instance
