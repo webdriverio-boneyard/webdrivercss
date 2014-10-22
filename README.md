@@ -178,6 +178,8 @@ with the captured screenshots or you could even break your integration test at t
 following example shows how to handle design breaks within integration tests:
 
 ```js
+var assert = require('assert');
+
 describe('my website should always look the same',function() {
 
     it('header should look the same',function(done) {
@@ -209,6 +211,8 @@ everywhere and accessible to everyone in your team.
 ### Applitools Eyes Example
 
 ```js
+var assert = require('assert');
+
 // create a WebdriverIO instance
 var client = require('webdriverio').remote({
     desiredCapabilities: {
