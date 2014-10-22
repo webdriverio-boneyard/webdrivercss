@@ -228,8 +228,8 @@ require('webdrivercss').init(client, {
 client
     .init()
     .url('http://example.com')
-    .webdrivercss('<app id or name>', {
-        name: '<scenario id or name>',
+    .webdrivercss('<app name>', {
+        name: '<test name>',
         elem: '#someElement',
         // ...
     }, function(err, res) {
