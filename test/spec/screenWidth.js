@@ -79,3 +79,45 @@ describe('WebdriverCSS captures shots with different screen widths', function() 
     after(afterHook);
 
 });
+
+describe('WebdriverCSS captures shots with different screen widths', function() {
+
+    before(function(done) {
+
+        this.browser = WebdriverIO.remote(capabilities);
+
+        // init plugin
+        WebdriverCSS.init(this.browser);
+
+        this.browser
+            .init()
+            .url(testurl)
+            .windowHandleSize({ width: 999, height: 999 })
+            .webdrivercss('screenWidthTest', [
+                {
+                    name: 'test_three',
+                    screenWidth: [320,480,640,1024]
+                },{
+                    name: 'test_four',
+                    screenWidth: [320,480,640,1024]
+                }
+            ])
+            .call(done);
+    });
+
+    /**
+     * 12 pictures get taken
+     * - 4 + 4 cropped images of the element for each screen resolution
+     * - 4 screenshots of the whole website for each screen resolution
+     */
+    it('if 4 screen widths are given and 2 elements captured, it should have taken 12 shots', function(done) {
+        glob('webdrivercss/*.png', function(err,files) {
+            should.not.exist(err);
+            files.should.have.length(12);
+            done();
+        });
+    });
+
+    after(afterHook);
+
+});
