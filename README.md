@@ -204,9 +204,12 @@ describe('my website should always look the same',function() {
 
 ![Applitools Eyes](http://pravdam.biz/clientblogs/applitools2/applitools-new-logo.png)
 
-[Applitools Eyes](http://applitools.com) provides a comprehensive automated UI validation with really
-smart alghorythm that are unique in this area. As a cloud service it makes your regression tests available
-everywhere and accessible to everyone in your team.
+Applitools Eyes is a comprehensive automated UI validation solution with really smart image matching algorithms
+that are unique in this area. As a cloud service it makes your regression tests available everywhere and
+accessible to everyone in your team, and its automated maintenance features simplify baseline maintenance.
+
+In order to work with Applitools Eyes you need to sign up and obtain an API key. You can sign up for a
+free account (here)[http://applitools.com/signup/].
 
 ### Applitools Eyes Example
 
