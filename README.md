@@ -388,3 +388,4 @@ maintain the existing coding style.
 * 2013-07-15   v0.2.2   introduced `hide` option, remove local repository before download
 * 2013-07-17   v0.2.3   x-browser/driver-compatibility improvements
 * 2013-09-01   v0.3.0   make WebdriverCSS compatible with WebdriverIO
+* 2013-10-30   v0.3.1   small bugfix in sync
