@@ -88,7 +88,6 @@ describe('WebdriverCSS should be able to', function() {
             isSessionClosed = false;
 
         var headers = {
-            'Authorization': 'Basic ' + new Buffer(':' + key).toString('base64'),
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
@@ -97,7 +96,7 @@ describe('WebdriverCSS should be able to', function() {
          * mock session initiatlization
          */
         nock(applitoolsHost, {reqheaders: headers})
-            .post('/api/sessions/running')
+            .post('/api/sessions/running?apiKey=' + key)
             .reply(200, function(uri, requestBody) {
                 isSessionInitiated = true;
                 return {
@@ -110,7 +109,7 @@ describe('WebdriverCSS should be able to', function() {
          * mock image sync
          */
         nock(applitoolsHost, {reqheaders: headers})
-            .post('/api/sessions/running/' + fakeSessionId)
+            .post('/api/sessions/running/' + fakeSessionId + '?apiKey=' + key)
             .reply(200, function(uri, requestBody) {
                 hasSyncedImage = true;
                 return { 'asExpected' : true };
@@ -120,7 +119,7 @@ describe('WebdriverCSS should be able to', function() {
          * mock session end
          */
         nock(applitoolsHost, {reqheaders: headers})
-            .delete('/api/sessions/running/' + fakeSessionId)
+            .delete('/api/sessions/running/' + fakeSessionId + '?apiKey=' + key)
             .reply(200, function(uri, requestBody) {
                 isSessionClosed = true;
                 return {'steps':1,'matches':1,'mismatches':0,'missing':0};
