@@ -449,6 +449,13 @@ It provides even a web interface for before/after comparison and stuff like this
 Please fork, add specs, and send pull requests! In lieu of a formal styleguide, take care to
 maintain the existing coding style.
 
+Default driver instance used for testing is [PhantomJS](https://github.com/ariya/phantomjs), so you need to either have
+it installed, or change it to your preferred driver (e.g., Firefox) in the `desiredCapabilities` in the `bootstrap.js`
+file under the `test` folder.
+
+You also need a web server to serve the "site" files and have the root folder set to "webdrivercss". We use the
+[http-server package](https://www.npmjs.org/package/http-server).
+
 ## Release History
 
 * 2013-03-28   v0.1.0   first release
