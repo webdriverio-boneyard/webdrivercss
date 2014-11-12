@@ -209,7 +209,7 @@ that are unique in this area. As a cloud service it makes your regression tests 
 accessible to everyone in your team, and its automated maintenance features simplify baseline maintenance.
 
 In order to work with Applitools Eyes you need to sign up and obtain an API key. You can sign up for a
-free account (here)[http://applitools.com/signup/].
+free account [here](http://applitools.com/signup/).
 
 ### Applitools Eyes Example
 
