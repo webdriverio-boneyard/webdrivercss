@@ -455,13 +455,3 @@ file under the `test` folder.
 
 You also need a web server to serve the "site" files and have the root folder set to "webdrivercss". We use the
 [http-server package](https://www.npmjs.org/package/http-server).
-
-## Release History
-
-* 2013-03-28   v0.1.0   first release
-* 2013-04-07   v0.1.1   convert screenWidth parameters into numbers
-* 2013-07-12   v0.2.0   implemented shot synchronization with an external API
-* 2013-07-13   v0.2.1   fixed scrollTo bug
-* 2013-07-15   v0.2.2   introduced `hide` option, remove local repository before download
-* 2013-07-17   v0.2.3   x-browser/driver-compatibility improvements
-* 2013-09-01   v0.3.0   make WebdriverCSS compatible with WebdriverIO
