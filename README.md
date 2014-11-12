@@ -8,7 +8,7 @@ initialization it enhances a WebdriverIO instance with an additional command cal
 `webdrivercss` and enables the possibility to save screenshots of specific parts of
 your application.
 
-#### Never loose track of unwanted CSS changes:
+#### Never lose track of unwanted CSS changes:
 
 ![alt text](http://webdriver.io/images/webdrivercss/hero.png "Logo Title Text 1")
 
