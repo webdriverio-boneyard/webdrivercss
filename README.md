@@ -53,27 +53,26 @@ client
 
 ## Install
 
-WebdriverCSS uses GraphicsMagick/ImageMagick for image processing as well as [node-canvas](https://github.com/learnboost/node-canvas)
+WebdriverCSS uses GraphicsMagick for image processing as well as [node-canvas](https://github.com/learnboost/node-canvas)
 for comparing and analyzing screenshots with [node-resemble](https://github.com/kpdecker/node-resemble).
-To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [ImageMagick](http://www.imagemagick.org/),
-[Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages) and of course Node.JS, NPM and Python preinstalled on your system.
+To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages)
+and of course Node.JS, NPM and Python preinstalled on your system.
 
 #### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
 ```sh
-$ brew install imagemagick graphicsmagick cairo
+$ brew install graphicsmagick cairo
 ```
 
 #### Ubuntu using apt-get
 ```sh
-$ sudo apt-get install imagemagick libmagickcore-dev
 $ sudo apt-get install graphicsmagick
 $ sudo apt-get install libcairo2-dev
 ```
 
 #### Windows
 
-Download and install executables for [ImageMagick](http://www.imagemagick.org/script/binary-releases.php)/[GraphicsMagick](http://www.graphicsmagick.org/download.html)
-and [Cairo](http://cairographics.org/download/). Please make sure you install the right binaries desired for your system (32bit vs 64bit).
+Download and install executables for [GraphicsMagick](http://www.graphicsmagick.org/download.html) and [Cairo](http://cairographics.org/download/).
+Please make sure you install the right binaries desired for your system (32bit vs 64bit).
 
 After these dependencies are installed you can install WebdriverCSS via NPM as usual:
 
