@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.0.1 (2014-11-21)
+* fixed scope of variables
+* document screenshot little bit more mobile friendly
+
 ## v1.0.0 (2014-11-12)
 * introduced two commands (documentScreenshot, viewportScreenshot)
 * use documentScreenshot to always take screenshot of the whole website
