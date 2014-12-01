@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.0.2 (2014-12-01)
+* better support for IE<9 browser
+* remove scrollbars before taking screenshots
+
 ## v1.0.1 (2014-11-21)
 * fixed scope of variables
 * document screenshot little bit more mobile friendly
