@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.0.3 (2014-12-01)
+* reset takeScreenshot flag after webdrivercss command finised
+
 ## v1.0.2 (2014-12-01)
 * better support for IE<9 browser
 * remove scrollbars before taking screenshots
