@@ -241,7 +241,7 @@ client
     .end();
 ```
 
-The following options might be interesting if you want to syncronize your taken images with
+The following options might be interesting if you want to synchronize your taken images with
 an external API. Checkout the [webdrivercss-adminpanel](https://github.com/webdriverio/webdrivercss-adminpanel)
 for more information on that.
 
