@@ -2,7 +2,7 @@ WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.0.3-brightgreen.
 ============
 
 __CSS regression testing in WebdriverIO__. This plugin is an automatic visual regression-testing
-tool for [WebdriverIO](http://webdriver.io). It was inspired by [James Cryers](https://github.com/jamescryer)
+tool for [WebdriverIO](http://webdriver.io). It was inspired by [James Cryer's](https://github.com/jamescryer)
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
 initialization it enhances a WebdriverIO instance with an additional command called
 `webdrivercss` and enables the possibility to save screenshots of specific parts of
