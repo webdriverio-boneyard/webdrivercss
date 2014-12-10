@@ -248,9 +248,9 @@ for more information on that.
 * **api** `String`
   URL to API interface
 * **user** `String`
-  user name (only necessary if API requires Basic Authentification or oAuth)
+  user name (only necessary if API requires Basic Authentication or oAuth)
 * **key** `String`
-  assigned user key (only necessary if API requires Basic Authentification or oAuth)
+  assigned user key (only necessary if API requires Basic Authentication or oAuth)
 
 
 ### Define specific areas
