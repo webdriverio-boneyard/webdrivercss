@@ -37,10 +37,10 @@ client
     .url('http://example.com')
     .webdrivercss('startpage',[
         {
-            name: 'header'
+            name: 'header',
             elem: '#header'
         }, {
-            name: 'hero'
+            name: 'hero',
             elem: '//*[@id="hero"]/div[2]'
         }
     ], function(err, res) {
