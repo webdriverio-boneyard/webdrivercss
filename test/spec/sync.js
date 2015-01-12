@@ -85,6 +85,7 @@ describe('WebdriverCSS should be able to', function() {
             applitoolsHost = 'https://eyessdk.applitools.com',
             isSessionInitiated = false,
             hasSyncedImage = false,
+            updateBaseline = false,
             isSessionClosed = false;
 
         var headers = {
@@ -119,7 +120,7 @@ describe('WebdriverCSS should be able to', function() {
          * mock session end
          */
         nock(applitoolsHost, {reqheaders: headers})
-            .delete('/api/sessions/running/' + fakeSessionId + '?apiKey=' + key)
+            .delete('/api/sessions/running/' + fakeSessionId + '?apiKey=' + key + '&updateBaseline=' + updateBaseline)
             .reply(200, function(uri, requestBody) {
                 isSessionClosed = true;
                 return {'steps':1,'matches':1,'mismatches':0,'missing':0};
@@ -130,7 +131,8 @@ describe('WebdriverCSS should be able to', function() {
 
             // init plugin
             var plugin = WebdriverCSS.init(this.browser, {
-                key:  key
+                key:  key,
+                updateBaseline: updateBaseline
             });
 
             this.browser
