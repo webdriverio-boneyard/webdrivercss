@@ -1,7 +1,10 @@
 ## Release History
 
-## v1.0.4 (2015-01-14)
+## v1.0.5 (2015-01-14)
 * Applitools integration: automatic test save (see #48)
+
+## v1.0.4 (2015-01-14)
+* no changes
 
 ## v1.0.3 (2014-12-01)
 * reset takeScreenshot flag after webdrivercss command finised
