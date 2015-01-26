@@ -19,8 +19,8 @@
     "deepmerge": "^0.2.7",
     "glob": "^3.2.9",
     "gm": "^1.14.2",
+    "node-resemble-js": "0.0.4",
     "request": "^2.34.0",
-    "resemble": "^1.0.3",
     "rimraf": "^2.2.8",
     "tar": "^0.1.19",
     "tar.gz": "^0.1.1"
