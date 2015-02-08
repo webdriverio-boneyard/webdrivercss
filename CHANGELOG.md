@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.0.6 (2015-02-08)
+* Using fs-extra to recursively make directories that don't exist. (see #53)
+* Switch to node-resemble-js (fixes #49)
+
 ## v1.0.5 (2015-01-14)
 * Applitools integration: automatic test save (see #48)
 
