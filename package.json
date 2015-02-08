@@ -23,12 +23,12 @@
     "request": "^2.34.0",
     "rimraf": "^2.2.8",
     "tar": "^0.1.19",
+    "fs-extra": "^0.16.3",
     "tar.gz": "^0.1.1"
   },
   "devDependencies": {
     "chai": "^1.9.1",
     "coveralls": "~2.10.0",
-    "fs-extra": "^0.16.3",
     "istanbul": "^0.2.7",
     "mocha": "^1.18.2",
     "mocha-istanbul": "^0.2.0",
