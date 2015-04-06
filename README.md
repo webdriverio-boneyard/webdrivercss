@@ -96,10 +96,10 @@ as parameter. Additionally you can define some options to configure the plugin. 
 the `webdrivercss` command will be available only for this instance.
 
 * **screenshotRoot** `String` ( default: *./webdrivercss* )<br>
-  path were all screenshots gets saved
+  path were all screenshots get saved
 
 * **failedComparisonsRoot** `String` ( default: *./webdrivercss/diff* )<br>
-  path were all screenshot diffs gets saved
+  path were all screenshot diffs get saved
 
 * **misMatchTolerance** `Number` ( default: *0.05* )<br>
   number between 0 and 100 that defines the degree of mismatch to consider two images as
