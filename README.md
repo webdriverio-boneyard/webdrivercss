@@ -96,20 +96,20 @@ as parameter. Additionally you can define some options to configure the plugin. 
 the `webdrivercss` command will be available only for this instance.
 
 * **screenshotRoot** `String` ( default: *./webdrivercss* )<br>
-  path were all screenshots get saved
+  path where all screenshots get saved.
 
 * **failedComparisonsRoot** `String` ( default: *./webdrivercss/diff* )<br>
-  path were all screenshot diffs get saved
+  path where all screenshot diffs get saved.
 
 * **misMatchTolerance** `Number` ( default: *0.05* )<br>
   number between 0 and 100 that defines the degree of mismatch to consider two images as
-  identical, increasing this value will decrease test coverage
+  identical, increasing this value will decrease test coverage.
 
 * **screenWidth** `Numbers[]` ( default: *[]* )<br>
-  if set all screenshots will be taken in different screen widths (e.g. for responsive design tests)
+  if set, all screenshots will be taken in different screen widths (e.g. for responsive design tests)
 
 * **updateBaseline** `Boolean` ( default: *false* )<br>
-  updates baseline images if comparison keeps failing
+  updates baseline images if comparison keeps failing.
 
 
 ### Example
