@@ -26,7 +26,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 gm.compare('webdrivercss/excludeUsingCssSelectors._.baseline.png', 'test/fixtures/excludeElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
                     isEqual.should.be.equal(true);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     done();
                 });
             });
@@ -44,7 +44,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 gm.compare('webdrivercss/excludeUsingXPath._.baseline.png', 'test/fixtures/excludeElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
                     isEqual.should.be.equal(true);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     done();
                 });
             });
@@ -67,7 +67,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 gm.compare('webdrivercss/excludeUsingXYParameters._.baseline.png', 'test/fixtures/excludeElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
                     isEqual.should.be.equal(true);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     done();
                 });
             });
@@ -95,7 +95,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 gm.compare('webdrivercss/excludeMultipleXYParameters._.baseline.png', 'test/fixtures/excludeElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
                     isEqual.should.be.equal(true);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     done();
                 });
             });
@@ -131,7 +131,7 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 gm.compare('webdrivercss/excludeMultipleXYPoints._.baseline.png', 'test/fixtures/excludeElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
                     isEqual.should.be.equal(true);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     done();
                 });
             });

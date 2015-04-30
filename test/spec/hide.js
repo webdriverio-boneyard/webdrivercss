@@ -25,7 +25,7 @@ describe('WebdriverCSS should hide parts of websites to ignore changing content'
             .call(function() {
                 gm.compare('webdrivercss/hideUsingCssSelectors._.baseline.png', 'test/fixtures/hideElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     isEqual.should.be.equal(true);
                     done();
                 });
@@ -43,7 +43,7 @@ describe('WebdriverCSS should hide parts of websites to ignore changing content'
             .call(function() {
                 gm.compare('webdrivercss/hideUsingXPath._.baseline.png', 'test/fixtures/hideElem.png', function (err, isEqual, equality, raw) {
                     should.not.exist(err);
-                    equality.should.be.equal(0);
+                    equality.should.be.within(0, 0.0001);
                     isEqual.should.be.equal(true);
                     done();
                 });
