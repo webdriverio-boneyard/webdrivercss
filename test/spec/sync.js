@@ -4,6 +4,8 @@ var fs = require('fs'),
     nock = require('nock'),
     path = require('path');
 
+nock.enableNetConnect();
+
 describe('WebdriverCSS should be able to', function() {
 
     describe('sync the image repository with an external API', function() {
