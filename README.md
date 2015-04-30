@@ -168,6 +168,9 @@ available:
 * **hide** `String[]`<br>
   hides all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `visibility: hidden`)
 
+* **remove** `String[]`<br>
+  removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
+
 The following paragraphs will give you a more detailed insight how to use these options properly.
 
 ### Let your test fail when screenshots differ
