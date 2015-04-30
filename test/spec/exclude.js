@@ -1,4 +1,4 @@
-describe.only('WebdriverCSS should exclude parts of websites to ignore changing content', function() {
+describe('WebdriverCSS should exclude parts of websites to ignore changing content', function() {
 
     before(function(done) {
 
@@ -36,8 +36,8 @@ describe.only('WebdriverCSS should exclude parts of websites to ignore changing 
         this.browser
             .url(testurlThree)
             .webdrivercss('excludeUsingXPath', {
-                elem: '//html/body/div',
-                exclude: '//html/body/div',
+                elem: '//html/body/section',
+                exclude: '//html/body/section',
                 name: '_'
             })
             .call(function() {
