@@ -1,4 +1,4 @@
-WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.0.6-brightgreen.svg)](https://www.npmjs.org/package/webdrivercss) [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
+WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.1.0-brightgreen.svg)](https://www.npmjs.org/package/webdrivercss) [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
 ============
 
 __CSS regression testing in WebdriverIO__. This plugin is an automatic visual regression-testing
@@ -53,25 +53,22 @@ client
 
 ## Install
 
-WebdriverCSS uses GraphicsMagick for image processing as well as [node-canvas](https://github.com/learnboost/node-canvas)
-for comparing and analyzing screenshots with [node-resemble](https://github.com/kpdecker/node-resemble).
-To install this package you'll need to have [GraphicsMagick](http://www.graphicsmagick.org/), [Cairo](https://github.com/LearnBoost/node-canvas/wiki/_pages)
-and of course Node.JS, NPM and Python preinstalled on your system.
+WebdriverCSS uses [GraphicsMagick](http://www.graphicsmagick.org/) for image processing. To install this
+package you'll need to have it preinstalled on your system.
 
 #### Mac OS X using [Homebrew](http://mxcl.github.io/homebrew/)
 ```sh
-$ brew install graphicsmagick cairo
+$ brew install graphicsmagick
 ```
 
 #### Ubuntu using apt-get
 ```sh
 $ sudo apt-get install graphicsmagick
-$ sudo apt-get install libcairo2-dev
 ```
 
 #### Windows
 
-Download and install executables for [GraphicsMagick](http://www.graphicsmagick.org/download.html) and [Cairo](http://cairographics.org/download/).
+Download and install executables for [GraphicsMagick](http://www.graphicsmagick.org/download.html).
 Please make sure you install the right binaries desired for your system (32bit vs 64bit).
 
 After these dependencies are installed you can install WebdriverCSS via NPM as usual:
@@ -79,14 +76,6 @@ After these dependencies are installed you can install WebdriverCSS via NPM as u
 ```sh
 $ npm install webdrivercss
 $ npm install webdriverio # if not already installed
-```
-
-Make sure your `PKG_CONFIG_PATH` is set in your environment otherwise you won't be able to install `canvas`
-probably. That actual path to your pkgconfig might differ though.
-
-```sh
-# make sure that this path exists on your machine
-$ export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
 ```
 
 ## Setup

@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.1.0 (2015-04-30)
+* got rid of cairo and node-canvas dependency by replacing it with [node-resemble-js](https://www.npmjs.com/package/node-resemble-js)
+* minor bugfixes and documentation improvements
+
 ## v1.0.6 (2015-02-08)
 * Using fs-extra to recursively make directories that don't exist. (see #53)
 * Switch to node-resemble-js (fixes #49)
