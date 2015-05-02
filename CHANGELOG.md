@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.1 (2015-05-02)
+* moved gm back to dependency list
+
 ## v1.1.0 (2015-04-30)
 * got rid of cairo and node-canvas dependency by replacing it with [node-resemble-js](https://www.npmjs.com/package/node-resemble-js)
 * minor bugfixes and documentation improvements
