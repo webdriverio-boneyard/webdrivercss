@@ -18,6 +18,7 @@
     "async": "^0.9.0",
     "deepmerge": "^0.2.7",
     "glob": "^5.0.5",
+    "gm": "^1.17.0",
     "node-resemble-js": "0.0.4",
     "request": "^2.55.0",
     "rimraf": "^2.3.2",
@@ -26,7 +27,6 @@
     "tar.gz": "^0.1.1"
   },
   "devDependencies": {
-    "gm": "^1.17.0",
     "chai": "^2.3.0",
     "coveralls": "~2.11.2",
     "istanbul": "^0.3.13",
