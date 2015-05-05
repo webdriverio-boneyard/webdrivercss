@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.2 (2015-05-05)
+* create random .tmp directories to run `documentScreenshot` in parallel - refs #71
+
 ## v1.1.1 (2015-05-02)
 * moved gm back to dependency list
 
