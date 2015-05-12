@@ -41,7 +41,7 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
             gm('webdrivercss/testWithoutParameter.withoutParams.baseline.png').size(function(err,size) {
                 should.not.exist(err);
                 size.width.should.be.equal(800);
-                size.height.should.be.within(documentHeight, documentHeight + 20);
+                size.height.should.be.equal(documentHeight - 20);
                 done();
             });
         });
