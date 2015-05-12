@@ -383,6 +383,42 @@ This will capture the following image at once:
 
 **file name:** header.320px.png
 
+Note that if you have multiple tests running one after the other, it is important to change the first argument passed to the `webdrivercss()` command to be unique, as WebdriverCSS saves time by remembering the name of previously captured screenshots.
+
+```js
+// Example using Mocha
+it('should check the first page',function(done) {
+  clinet
+    .init()
+    .url('https://example.com')
+    // Make this name unique.
+    .webdrivercss('page1', [
+      {
+        name: 'test',
+        screenWidth: [320,480,640,1024]
+      }, {
+        name: 'test_two',
+        screenWidth: [444,666]
+      }
+    ])
+    .end()
+    .call(done);
+});
+
+it('should check the second page',function(done) {
+  clinet
+    // ...
+    // Make this name unique.
+    .webdrivercss('page2', [
+      // ..
+    ])
+    // ...
+);
+
+```
+
+
+
 ### Synchronize your taken Images
 
 If you want to have your image repository available regardless where you run your tests, you can
