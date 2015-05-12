@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.1.3 (2015-05-12)
+* don't limit shot to body element
+* minor code and jslint fixes
+
 ## v1.1.2 (2015-05-05)
 * create random .tmp directories to run `documentScreenshot` in parallel - refs #71
 
