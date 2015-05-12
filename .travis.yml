@@ -14,7 +14,7 @@ before_script:
   - "npm install -g bower http-server"
   - "cd test/site && bower install && cd ../../"
   - "curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
-  - "java -jar selenium-server-standalone-2.43.1.jar 2>&1 >/dev/null &"
+  - "java -jar selenium-server-standalone-2.43.1.jar -host 127.0.0.1 -port 4444 2>/dev/null 1>/dev/null &"
   - "http-server -p 8080 &"
   - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov && cp lib/documentScreenshot.js lib-cov && cp lib/viewportScreenshot.js lib-cov && cp lib/startSession.js lib-cov && cp lib/setScreenWidth.js lib-cov; fi"
 
