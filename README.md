@@ -388,7 +388,7 @@ Note that if you have multiple tests running one after the other, it is importan
 ```js
 // Example using Mocha
 it('should check the first page',function(done) {
-  clinet
+  client
     .init()
     .url('https://example.com')
     // Make this name unique.
@@ -406,7 +406,7 @@ it('should check the first page',function(done) {
 });
 
 it('should check the second page',function(done) {
-  clinet
+  client
     // ...
     // Make this name unique.
     .webdrivercss('page2', [
