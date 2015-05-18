@@ -134,17 +134,19 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
     });
 
     describe('should do a screenshot of multiple elements', function(done) {
+        var optsArrayOrig = [
+            {
+                elem: '.red',
+                name: 'red'
+            }, {
+                elem: '.green',
+                name: 'green'
+            }];
+        var optsArrayClone = JSON.parse(JSON.stringify(optsArrayOrig));
 
         before(function(done) {
             this.browser
-                .webdrivercss('testWithMultipleElement', [
-                {
-                    elem: '.red',
-                    name: 'red'
-                }, {
-                    elem: '.green',
-                    name: 'green'
-                }])
+                .webdrivercss('testWithMultipleElement', optsArrayClone)
                 .call(done);
         });
 
@@ -152,6 +154,11 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
             fs.existsSync('webdrivercss/testWithMultipleElement.png').should.equal(true);
             fs.existsSync('webdrivercss/testWithMultipleElement.red.baseline.png').should.equal(true);
             fs.existsSync('webdrivercss/testWithMultipleElement.green.baseline.png').should.equal(true);
+            done();
+        });
+
+        it('should not change the array passed in', function(done) {
+            optsArrayClone.should.deep.equal(optsArrayOrig);
             done();
         });
 
