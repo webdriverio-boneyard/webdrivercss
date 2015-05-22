@@ -109,7 +109,7 @@ var client = require('webdriverio').remote({
     desiredCapabilities: {
         browserName: 'phantomjs'
     }
-});
+}).init();
 
 // initialise WebdriverCSS for `client` instance
 require('webdrivercss').init(client, {
