@@ -31,6 +31,8 @@ var options = {
   }
 };
 
+// Get your key here: https://www.browserstack.com/accounts/automate
+//
 // Script assumes your BrowserStack creds are listed in JSON somewhere in your
 // system. Convenient if you want to avoid storing keys in VCS. If storing in
 // VCS is ok, just assign an object literal to config:
