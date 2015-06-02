@@ -1,0 +1,7 @@
+# ignore the output of these examples
+visual/failed
+visual/reference
+
+# if you want to save ONLY the baseline images and not the full screenshots,
+# use a rule like this:
+!visual/reference/*baseline*
