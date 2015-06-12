@@ -52,14 +52,21 @@ var client = webdriverio.remote({
   port: 80,
   user: config.browserstack.user,
   key: config.browserstack.key
-}).init();
-
-// Initialize webdrivercss
-webdrivercss.init(client, options.webdrivercss);
+});
 
 // Run the test
 describe('Win7 / IE9: My Component @ 1024', function () {
   this.timeout(600000);
+
+  // If multiple tests are run by mocha, use its setup function to initialize
+  // webdriverio and webdrivercss. Otherwise, BrowserStack connections might
+  // timeout while you wait for the first few tests to run.
+  before(function(){
+    // Initialize webdriverio
+    client.init();
+    // Initialize webdrivercss
+    webdrivercss.init(client, options.webdrivercss);
+  });
 
   it('should look the same', function (done) {
     client
