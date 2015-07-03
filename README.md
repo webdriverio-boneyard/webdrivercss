@@ -1,6 +1,8 @@
 WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.1.3-brightgreen.svg)](https://www.npmjs.org/package/webdrivercss) [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master)
 ============
 
+__Note:__ WebdriverCSS isn't yet compatible with WebdriverIO `v3.0`. We are currently working on it to make that happen soon. So stay tuned.
+
 __CSS regression testing in WebdriverIO__. This plugin is an automatic visual regression-testing
 tool for [WebdriverIO](http://webdriver.io). It was inspired by [James Cryer's](https://github.com/jamescryer)
 awesome project called [PhantomCSS](https://github.com/Huddle/PhantomCSS). After
