@@ -1,5 +1,9 @@
 ## Release History
 
+## v1.1.4 (2015-07-09)
+* propagate arguments to result object - refs #88
+* Prevent webdrivercss from modifying an array passed to it - refs #77
+
 ## v1.1.3 (2015-05-12)
 * don't limit shot to body element
 * minor code and jslint fixes
