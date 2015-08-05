@@ -33,7 +33,7 @@
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
     "nock": "^1.7.1",
-    "webdriverio": "^2.4.5"
+    "webdriverio": "https://github.com/amitaibu/webdriverio/tarball/65655dc2948c6a1e772b656ea4209969e9385fc9"
   },
   "keywords": [
     "webdriverjs",
