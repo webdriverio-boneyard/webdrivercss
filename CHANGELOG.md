@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.5 (2015-08-05)
+* improved screen capturing in IE - fixes #93 #91
+
 ## v1.1.4 (2015-07-09)
 * propagate arguments to result object - refs #88
 * Prevent webdrivercss from modifying an array passed to it - refs #77
