@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.6 (2015-08-06)
+* Save a new baseline image, if one doesn't already exist. - fixes #101
+
 ## v1.1.5 (2015-08-05)
 * improved screen capturing in IE - fixes #93 #91
 
