@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.7 (2015-08-20)
+* set scroll height of body before hiding overflow
+
 ## v1.1.6 (2015-08-06)
 * Save a new baseline image, if one doesn't already exist. - fixes #101
 
