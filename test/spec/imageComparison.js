@@ -206,6 +206,40 @@ describe('WebdriverCSS compares images and exposes information about CSS regress
 
     });
 
+    describe('should match an image when match percentage is equal to tolerance', function() {
+        var resultObject = {};
+
+        before(function(done) {
+            this.browser
+                .url(testurlFour)
+                .webdrivercss('comparisonTest', {
+                    elem: '#container',
+                    name: 'test-equal'
+                }, function(err,res) {
+                    should.not.exist(err);
+                })
+                .execute(function() {
+                    document.querySelector('#difference').style.backgroundColor = 'white';
+                }, [])
+                .webdrivercss('comparisonTest', {
+                    elem: '#container',
+                    name: 'test-equal'
+                }, function(err,res) {
+                    should.not.exist(err);
+                    resultObject = res['test-equal'][0];
+                })
+                .call(done);
+        });
+
+        it('should be within tolerance', function() {
+            resultObject.misMatchPercentage.should.be.a('number');
+            resultObject.misMatchPercentage.should.equal(0.05);
+            resultObject.isExactSameImage.should.equal(false);
+            resultObject.isWithinMisMatchTolerance.should.equal(true);
+        });
+
+    });
+
     after(afterHook);
 
 });
