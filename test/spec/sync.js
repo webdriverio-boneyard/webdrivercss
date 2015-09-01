@@ -72,6 +72,9 @@ describe('WebdriverCSS should be able to', function() {
                 .sync()
                 .call(function() {
                     expect(madeRequest).to.be.true;
+
+                    // should delete the tarball file after syncing
+                    expect(fs.existsSync(path.join(__dirname, '..', '..', 'webdrivercss.tar.gz'))).to.be.false;
                 })
                 .call(done);
 
