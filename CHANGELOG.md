@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.8 (2015-09-05)
+* remove tarball after sync
+
 ## v1.1.7 (2015-08-20)
 * set scroll height of body before hiding overflow
 
