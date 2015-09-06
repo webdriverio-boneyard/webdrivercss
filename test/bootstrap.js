@@ -21,7 +21,6 @@ screenshotRootDefault = 'webdrivercss';
 failedComparisonsRootDefault = 'webdrivercss/diff';
 screenshotRootCustom = '__screenshotRoot__';
 failedComparisonsRootCustom = '__failedComparisonsRoot__';
-repositorytargz = 'webdrivercss.tar.gz';
 
 afterHook = function(done) {
 
@@ -35,8 +34,7 @@ afterHook = function(done) {
         function(done) { fs.remove(failedComparisonsRootDefault,done); },
         function(done) { fs.remove(screenshotRootDefault,done); },
         function(done) { fs.remove(failedComparisonsRootCustom,done); },
-        function(done) { fs.remove(screenshotRootCustom,done); },
-        function(done) { fs.remove(repositorytargz,done); }
+        function(done) { fs.remove(screenshotRootCustom,done); }
     ], done);
 
 };
