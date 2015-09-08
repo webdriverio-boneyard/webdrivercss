@@ -24,7 +24,8 @@ describe('WebdriverCSS captures desired parts of a website as screenshot with sp
                 .webdrivercss('testWithoutParameter', { name: 'withoutParams'})
                 .execute(function(){
                     return document.body.clientHeight;
-                }, function(err,res) {
+                })
+                .then(function(res) {
                     documentHeight = res.value;
                 })
                 .call(done);
