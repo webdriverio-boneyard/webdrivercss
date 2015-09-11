@@ -1,5 +1,8 @@
 ## Release History
 
+## v1.1.9 (2015-09-11)
+* make screenshots high dpi aware
+
 ## v1.1.8 (2015-09-05)
 * remove tarball after sync
 
