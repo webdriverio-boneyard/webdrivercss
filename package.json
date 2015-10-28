@@ -20,6 +20,7 @@
     "glob": "^5.0.5",
     "gm": "^1.17.0",
     "node-resemble-js": "0.0.4",
+    "q": "^1.4.1",
     "request": "^2.55.0",
     "rimraf": "^2.3.2",
     "tar": "^2.1.0",
@@ -33,7 +34,7 @@
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
     "nock": "^1.7.1",
-    "webdriverio": "^2.4.5"
+    "webdriverio": "^3.2.1"
   },
   "keywords": [
     "webdriverjs",
