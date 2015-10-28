@@ -1,5 +1,8 @@
 ## Release History
 
+## 2.0.0beta-rc1 (2015-10-28)
+* merged dev branch to make WebdriverCSS compatible with v3
+
 ## v1.1.9 (2015-09-11)
 * make screenshots high dpi aware
 
