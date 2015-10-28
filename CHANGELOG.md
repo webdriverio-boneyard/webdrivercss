@@ -1,5 +1,8 @@
 ## Release History
 
+## 2.0.0beta-rc1 (2015-10-28)
+* merged dev branch to make WebdriverCSS compatible with v3
+
 ## v1.1.10 (2015-12-19)
 * Adjust scrolling to better support sticky headers (#131)
 * Add option to tweak node-resemble-js image comparison (#121)
