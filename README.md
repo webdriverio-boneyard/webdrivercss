@@ -165,6 +165,9 @@ available:
 
 * **remove** `String[]`<br>
   removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
+  
+* **ignore** `String`<br>
+  can be used to ignore color differences or differences caused by antialising artifacts in the screenshot comparison
 
 The following paragraphs will give you a more detailed insight how to use these options properly.
 
@@ -357,6 +360,24 @@ client
     });
 ```
 ![alt text](http://webdriver.io/images/webdrivercss/exclude2.png "Logo Title Text 1")
+
+### Tweak the image comparison
+
+If you experience problems with unstable comparison results you might want to try tweaking the algorithm.
+There are two options available: `colors` and `antialiasing`. `colors` might help you if you don't care about color differences on your page, while the `antialiasing` option can for example reduce unexpected differences on font or image edges:
+
+```js
+client
+    .url('http://tumblr.com/themes')
+    .webdrivercss('tumblrpage', {
+        name: 'startpage',
+        ignore: 'antialiasing',
+        screenWidth: [1200]
+    });
+```
+
+Note: This doesn't affect the taken screenshots, but only the comparison calculations.
+By setting this option you reduce the sensitivity of the comparison algorithm. Though it's unlikely this might cause layout changes to remain unnoticed.
 
 ### Keep an eye on mobile screen resolution
 
