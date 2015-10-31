@@ -19,6 +19,7 @@ testurlFour = 'http://localhost:8080/test/site/four.html';
  * set some fix test variables
  */
 screenshotRootDefault = 'webdrivercss';
+nestedScreenshotRootDefault = 'nestedTar/webdrivercss';
 failedComparisonsRootDefault = 'webdrivercss/diff';
 screenshotRootCustom = '__screenshotRoot__';
 failedComparisonsRootCustom = '__failedComparisonsRoot__';
@@ -34,6 +35,7 @@ afterHook = function(done) {
         function(done) { browser.end(done); },
         function(done) { fs.remove(failedComparisonsRootDefault,done); },
         function(done) { fs.remove(screenshotRootDefault,done); },
+        function(done) { fs.remove(nestedScreenshotRootDefault,done); },
         function(done) { fs.remove(failedComparisonsRootCustom,done); },
         function(done) { fs.remove(screenshotRootCustom,done); }
     ], done);

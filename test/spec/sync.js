@@ -8,79 +8,97 @@ nock.enableNetConnect();
 
 describe('WebdriverCSS should be able to', function() {
 
-    describe('sync the image repository with an external API', function() {
+    var testCases = [
+        {
+            name: 'image repository',
+            root: 'webdrivercss'
+        },
+        {
+            name: 'nested image repository',
+            root: 'nestedTar/webdrivercss'
+        }
+    ];
 
-        before(function(done) {
-            this.browser = WebdriverIO.remote(capabilities);
+    testCases.forEach(function (test) {
 
-            // init plugin
-            var plugin = WebdriverCSS.init(this.browser, {
-                api:  'http://127.0.0.1:8081/webdrivercss/api',
-                user: 'johndoe',
-                key:  'xyz'
+        describe('sync the ' + test.name + ' with an external API for ', function() {
+
+            before(function(done) {
+
+                this.browser = WebdriverIO.remote(capabilities);
+
+                // init plugin
+                var plugin = WebdriverCSS.init(this.browser, {
+                    api:  'http://127.0.0.1:8081/webdrivercss/api',
+                    user: 'johndoe',
+                    key:  'xyz',
+                    screenshotRoot: test.root
+                });
+
+                this.browser
+                    .init()
+                    .url(testurl)
+                    .call(done);
             });
 
-            this.browser
-                .init()
-                .url(testurl)
-                .call(done);
-        });
+            it('throws an error if API isn\'t provided', function(done) {
+                var browser = WebdriverIO.remote(capabilities);
 
-        it('throws an error if API isn\'t provided', function(done) {
-            var browser = WebdriverIO.remote(capabilities);
-            WebdriverCSS.init(browser);
+                WebdriverCSS.init(browser);
 
-            browser.init().sync(function(err) {
-                expect(err).not.to.be.null;
-            }).end(done);
-        });
+                browser.init().sync(function(err) {
+                    expect(err).not.to.be.null;
+                }).end(done);
+            });
 
-        it('should download and unzip a repository by calling sync() for the first time', function(done) {
+            it('should download and unzip a repository by calling sync() for the first time', function(done) {
 
-            var scope = nock('http://127.0.0.1:8081')
-                .defaultReplyHeaders({
-                    'Content-Type': 'application/octet-stream'
-                })
-                .get('/webdrivercss/api/webdrivercss.tar.gz')
-                .reply(200, function(uri, requestBody) {
-                    return fs.createReadStream(path.join(__dirname, '..', 'fixtures', 'webdrivercss.tar.gz'));
-                });
+                var scope = nock('http://127.0.0.1:8081')
+                    .defaultReplyHeaders({
+                        'Content-Type': 'application/octet-stream'
+                    })
+                    .get('/webdrivercss/api/webdrivercss.tar.gz')
+                    .reply(200, function(uri, requestBody) {
+                        return fs.createReadStream(path.join(__dirname, '..', 'fixtures', 'webdrivercss.tar.gz'));
+                    });
 
-            this.browser.sync().call(function() {
-                expect(fs.existsSync(path.join(__dirname, '..', '..', 'webdrivercss'))).to.be.true;
-                expect(fs.existsSync(path.join(__dirname, '..', '..', 'webdrivercss', 'comparisonTest.current.png'))).to.be.true;
-            }).call(done);
+                this.browser.sync().call(function() {
+                    expect(fs.existsSync(path.join(__dirname, '..', '..', test.root))).to.be.true;
+                    expect(fs.existsSync(path.join(__dirname, '..', '..', test.root, 'comparisonTest.current.png'))).to.be.true;
+                }).call(done);
 
-        });
+            });
 
-        it('should zip and upload repository to API after test run', function(done) {
+            it('should zip and upload repository to API after test run', function(done) {
 
-            var madeRequest = false;
-            var scope = nock('http://127.0.0.1:8081')
-                .defaultReplyHeaders({
-                    'Content-Type': 'application/octet-stream'
-                })
-                .post('/webdrivercss/api')
-                .reply(200, function(uri, requestBody) {
-                    madeRequest = true;
-                });
+                var madeRequest = false;
+                var scope = nock('http://127.0.0.1:8081')
+                    .defaultReplyHeaders({
+                        'Content-Type': 'application/octet-stream'
+                    })
+                    .post('/webdrivercss/api')
+                    .reply(200, function(uri, requestBody) {
+                        madeRequest = true;
+                    });
 
-            this.browser
-                .webdrivercss('testWithoutParameter', {
-                    name: 'test'
-                })
-                .sync()
-                .call(function() {
-                    expect(madeRequest).to.be.true;
+                this.browser
+                    .webdrivercss('testWithoutParameter', {
+                        name: 'test'
+                    })
+                    .sync()
+                    .call(function() {
+                        expect(madeRequest).to.be.true;
 
-                    // should delete the tarball file after syncing
-                    expect(fs.existsSync(path.join(__dirname, '..', '..', 'webdrivercss.tar.gz'))).to.be.false;
-                })
-                .call(done);
+                        // should delete the tarball file after syncing
+                        expect(fs.existsSync(path.join(__dirname, '..', '..', 'webdrivercss.tar.gz'))).to.be.false;
+                    })
+                    .call(done);
 
-        });
+            });
 
         after(afterHook);
+    });
+
     });
 
 

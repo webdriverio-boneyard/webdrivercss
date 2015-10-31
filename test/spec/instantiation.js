@@ -35,6 +35,15 @@ describe('WebdriverCSS plugin as WebdriverIO enhancement', function() {
         expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
         expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
         expect(plugin).to.have.property('misMatchTolerance').to.equal(0.05);
+        expect(plugin).to.have.property('pathToFolder').to.equal('.');
+    });
+
+    it('should evaluate the correct path to folder value for nested screendhot repos', function() {
+        var plugin = WebdriverCSS.init(this.browser, {
+            screenshotRoot: 'nested/screenshotRoot'
+        });
+
+        expect(plugin).to.have.property('pathToFolder').to.equal('./nested/');
 
     });
 
