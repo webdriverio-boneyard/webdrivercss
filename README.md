@@ -123,7 +123,10 @@ require('webdrivercss').init(client, {
     screenshotRoot: 'my-shots',
     failedComparisonsRoot: 'diffs',
     misMatchTolerance: 0.05,
-    screenWidth: [320,480,640,1024]
+    screenWidth: [320,480,640,1024],
+    onScreenWidthChange: function(browser) {
+
+    }
 });
 ```
 
@@ -168,6 +171,9 @@ available:
   
 * **ignore** `String`<br>
   can be used to ignore color differences or differences caused by antialising artifacts in the screenshot comparison
+
+* **onScreenWidthChange** `function`<br>
+  can be used to make changes to the page after the screen width has been changed. The webdriverio instance is passed to the function.
 
 The following paragraphs will give you a more detailed insight how to use these options properly.
 
