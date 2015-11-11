@@ -123,10 +123,7 @@ require('webdrivercss').init(client, {
     screenshotRoot: 'my-shots',
     failedComparisonsRoot: 'diffs',
     misMatchTolerance: 0.05,
-    screenWidth: [320,480,640,1024],
-    onScreenWidthChange: function(browser) {
-
-    }
+    screenWidth: [320,480,640,1024]
 });
 ```
 
@@ -193,7 +190,10 @@ describe('my website should always look the same',function() {
             .url('http://www.example.org')
             .webdrivercss('header', {
                 name: 'header',
-                elem: '#header'
+                elem: '#header',
+                onScreenWidthChange: function(browser) {
+
+                }
             }, function(err,res) {
                 assert.ifError(err);
 
