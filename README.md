@@ -1,4 +1,4 @@
-WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.1.9-brightgreen.svg)](https://www.npmjs.org/package/webdrivercss) [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master) [![Join the chat at https://gitter.im/webdriverio/webdrivercss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/webdriverio/webdrivercss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.1.10-brightgreen.svg)](https://www.npmjs.org/package/webdrivercss) [![Build Status](https://travis-ci.org/webdriverio/webdrivercss.png?branch=master)](https://travis-ci.org/webdriverio/webdrivercss) [![Coverage Status](https://coveralls.io/repos/webdriverio/webdrivercss/badge.png?branch=master)](https://coveralls.io/r/webdriverio/webdrivercss?branch=master) [![Join the chat at https://gitter.im/webdriverio/webdrivercss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/webdriverio/webdrivercss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ============
 
 ---
@@ -165,7 +165,7 @@ available:
 
 * **remove** `String[]`<br>
   removes all elements queried by all kinds of different [WebdriverIO selector strategies](http://webdriver.io/guide/usage/selectors.html) (via `display: none`)
-  
+
 * **ignore** `String`<br>
   can be used to ignore color differences or differences caused by antialising artifacts in the screenshot comparison
 
