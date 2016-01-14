@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -ex
+set -e
 
 finish() {
   pkill -P $$ # kills all processes that have this pid - $$ - as the parent
@@ -48,7 +48,7 @@ if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then
 fi
 
 # Run tests
-$NODE_BIN/_mocha -R $MOCHA_REPORTERS
+BLUEBIRD_LONG_STACK_TRACES=1 $NODE_BIN/_mocha -R $MOCHA_REPORTERS
 STATUS=$?
 
 # Echo coverage information
