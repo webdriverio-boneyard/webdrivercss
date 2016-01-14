@@ -15,7 +15,6 @@
     "url": "git://github.com/webdriverio/webdrivercss.git"
   },
   "dependencies": {
-    "async": "^0.9.0",
     "bluebird": "^3.1.1",
     "deepmerge": "^0.2.7",
     "fs-extra": "^0.18.2",
@@ -23,13 +22,13 @@
     "gm": "^1.17.0",
     "node-resemble-js": "0.0.4",
     "object-assign": "^4.0.1",
-    "q": "^1.4.1",
     "request": "^2.55.0",
     "rimraf": "^2.3.2",
     "tar": "^2.1.0",
     "tar.gz": "^1.0.1"
   },
   "devDependencies": {
+    "async": "^0.9.0",
     "bower": "^1.7.2",
     "chai": "^2.3.0",
     "coveralls": "~2.11.2",
