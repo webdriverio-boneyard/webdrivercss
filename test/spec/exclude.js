@@ -136,7 +136,15 @@ describe('WebdriverCSS should exclude parts of websites to ignore changing conte
                 });
             });
     });
-
+    it('should ignore missing elements on exclude',function(done){
+        this.browser
+            .url(testurl)
+            .webdrivercss('ignoreMissingElements', {
+              exclude: ["#not-really-here"],
+              name: '_'
+            })
+            .call(done);
+    });
     after(afterHook);
 
 });
