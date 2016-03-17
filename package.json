@@ -34,7 +34,7 @@
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
     "nock": "^1.7.1",
-    "webdriverio": "^3.2.1"
+    "webdriverio": "^4.0.3"
   },
   "keywords": [
     "webdriverjs",
