@@ -192,12 +192,31 @@ describe('my website should always look the same',function() {
                 assert.ifError(err);
 
                 // this will break the test if screenshot is not within the mismatch tolerance
-                assert.ok(res.isWithinMisMatchTolerance);
+                assert.ok(res.header[0].isWithinMisMatchTolerance);
             })
             .call(done);
     });
 
     // ...
+```
+
+The `res` variable will be an object containing details on the screenshots taken. It will have properties matching each element name, and the value of those properties will contain an array of screenshots at each resolution.
+
+For example, the `res` object for the code above would be:
+
+```js
+{ 
+  header: [ 
+    {
+      baselinePath: 'webdrivercss/header.header.baseline.png',
+      message: 'mismatch tolerance not exceeded (~0), baseline didn\'t change',
+      misMatchPercentage: 0,
+      isExactSameImage: true,
+      isSameDimensions: true,
+      isWithinMisMatchTolerance: true
+    }
+  ]
+}
 ```
 
 ### [Applitools Eyes](http://applitools.com) Support
