@@ -5,24 +5,15 @@ language: node_js
 
 node_js:
   - '0.10'
+  - '0.12'
+  - '4'
+  - '5'
 
 before_install:
   - sudo apt-get update
   - sudo apt-get install imagemagick graphicsmagick libcairo2-dev
 
-before_script:
-  - "npm install -g bower http-server"
-  - "cd test/site && bower install && cd ../../"
-  - "curl -O http://selenium-release.storage.googleapis.com/2.43/selenium-server-standalone-2.43.1.jar"
-  - "java -jar selenium-server-standalone-2.43.1.jar -host 127.0.0.1 -port 4444 2>/dev/null 1>/dev/null &"
-  - "http-server -p 8080 &"
-  - "sleep 10"
-  - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then ./node_modules/.bin/istanbul i lib -o lib-cov && cp lib/getPageInfo.js lib-cov && cp lib/makeScreenshot.js lib-cov && cp lib/documentScreenshot.js lib-cov && cp lib/viewportScreenshot.js lib-cov && cp lib/startSession.js lib-cov && cp lib/setScreenWidth.js lib-cov; fi"
-
-script: "npm run-script travis"
-
-after_script:
-  - "if [[ $WEBDRIVERCSS_COVERAGE == '1' ]]; then cat lcov.info | ./node_modules/coveralls/bin/coveralls.js; fi"
+script: "npm test"
 
 env:
   matrix:

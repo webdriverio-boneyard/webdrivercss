@@ -1,13 +1,13 @@
 {
   "name": "webdrivercss",
-  "version": "1.1.10",
+  "version": "2.0.0beta-rc1",
   "description": "Regression testing tool for WebdriverJS",
   "author": "Christian Bromann <mail@christian-bromann.com>",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "travis": "./node_modules/.bin/mocha -R $MOCHA_REPORTERS",
+    "test": "bash ./test/test-run.sh",
+    "test-cov": "WEBDRIVERCSS_COVERAGE=1 bash ./test/test-run.sh",
     "prepublish": "npm prune"
   },
   "repository": {
@@ -15,25 +15,29 @@
     "url": "git://github.com/webdriverio/webdrivercss.git"
   },
   "dependencies": {
-    "async": "^0.9.0",
+    "bluebird": "^3.1.1",
     "deepmerge": "^0.2.7",
+    "fs-extra": "^0.18.2",
     "glob": "^5.0.5",
     "gm": "^1.17.0",
     "node-resemble-js": "0.0.4",
+    "object-assign": "^4.0.1",
     "request": "^2.55.0",
     "rimraf": "^2.3.2",
     "tar": "^2.1.0",
-    "fs-extra": "^0.18.2",
     "tar.gz": "^1.0.1"
   },
   "devDependencies": {
+    "async": "^0.9.0",
+    "bower": "^1.7.2",
     "chai": "^2.3.0",
     "coveralls": "~2.11.2",
+    "http-server": "^0.8.5",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
     "nock": "^1.7.1",
-    "webdriverio": "^2.4.5"
+    "webdriverio": "^3.2.1"
   },
   "keywords": [
     "webdriverjs",
