@@ -1,6 +1,6 @@
 {
   "name": "webdrivercss",
-  "version": "2.0.0beta-rc1",
+  "version": "2.1.0beta-rc1",
   "description": "Regression testing tool for WebdriverJS",
   "author": "Christian Bromann <mail@christian-bromann.com>",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
     "nock": "^1.7.1",
-    "webdriverio": "^3.2.1"
+    "webdriverio": "^4.0.3"
   },
   "keywords": [
     "webdriverjs",

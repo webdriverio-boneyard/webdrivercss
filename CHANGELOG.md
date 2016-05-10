@@ -1,5 +1,8 @@
 ## Release History
 
+## 2.1.0beta-rc1 (2016-03-17)
+* make WebdriverCSS compatible with v4
+
 ## 2.0.0beta-rc1 (2015-10-28)
 * merged dev branch to make WebdriverCSS compatible with v3
 
