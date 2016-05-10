@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "travis": "./node_modules/.bin/mocha -R $MOCHA_REPORTERS",
+    "test": "bash ./test/test-run.sh",
+    "test-cov": "WEBDRIVERCSS_COVERAGE=1 bash ./test/test-run.sh",
     "prepublish": "npm prune"
   },
   "repository": {
@@ -27,8 +27,10 @@
     "tar.gz": "^1.0.1"
   },
   "devDependencies": {
+    "bower": "^1.7.2",
     "chai": "^2.3.0",
     "coveralls": "~2.11.2",
+    "http-server": "^0.8.5",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.4",
     "mocha-istanbul": "^0.2.0",
