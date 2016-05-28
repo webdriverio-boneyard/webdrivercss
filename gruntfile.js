@@ -4,12 +4,13 @@ module.exports = function (grunt) {
         clean: ['build'],
         babel: {
             options: {
-                sourceMap: false
+                sourceMap: false,
+                plugins: ['transform-async-to-generator']
             },
             dist: {
                 files: [{
                     expand: true,
-                    cwd: './tasks',
+                    cwd: './lib',
                     src: ['*.js'],
                     dest: 'build',
                     ext: '.js'
@@ -18,7 +19,7 @@ module.exports = function (grunt) {
         },
         watch: {
             dist: {
-                files: ['./tasks/*.js'],
+                files: ['./lib/*.js'],
                 tasks: ['babel:dist']
             }
         },
@@ -26,7 +27,7 @@ module.exports = function (grunt) {
             options: {
                 parser: 'babel-eslint'
             },
-            target: ['tasks/*.js']
+            target: ['lib/*.js']
         },
         contributors: {
             options: {
@@ -58,7 +59,7 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['build'])
     grunt.registerTask('build', 'Build grunt-webdriver', function () {
         grunt.task.run([
-            'eslint',
+            // 'eslint',
             'clean',
             'babel'
         ])

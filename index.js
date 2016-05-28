@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * WebdriverCSS
  * Regression testing tool for WebdriverIO
@@ -8,4 +6,4 @@
  * @license Licensed under the MIT license.
  */
 
-module.exports = process.env.WEBDRIVERCSS_COVERAGE === '1' ? require('./lib-cov/webdrivercss.js') : require('./lib/webdrivercss.js');
+module.exports = process.env.WEBDRIVERCSS_COVERAGE === '1' ? require('./build-cov/webdrivercss.js') : require('./build/webdrivercss.js');
