@@ -205,8 +205,8 @@ The `res` variable will be an object containing details on the screenshots taken
 For example, the `res` object for the code above would be:
 
 ```js
-{ 
-  header: [ 
+{
+  header: [
     {
       baselinePath: 'webdrivercss/header.header.baseline.png',
       message: 'mismatch tolerance not exceeded (~0), baseline didn\'t change',
@@ -534,6 +534,14 @@ You also need a web server to serve the "site" files and have the root folder se
 /path/to/webdrivercss-repo/ $ http-server -p 8080
 ```
 
+The "site" has few front-end dependencies, that can be installed with the following commands:
+
+```
+npm install -g bower
+cd test/site
+bower install
+```
+
 You can validate the site is loading correctly by visiting `http://localhost:8080/test/site/index.html` in a browser.
 
 You'll also need a local selenium server running. You can install and start one via the following commands in a separate terminal:
@@ -543,3 +551,5 @@ npm install -g selenium-standalone
 selenium-standalone install
 selenium-standalone start
 ```
+
+Finally run `grunt` for creating a build and then test it with `npm test`.

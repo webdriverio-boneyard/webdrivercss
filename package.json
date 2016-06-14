@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha",
-    "travis": "./node_modules/.bin/mocha -R $MOCHA_REPORTERS",
+    "test": "mocha",
+    "travis": "mocha -R $MOCHA_REPORTERS",
     "prepublish": "npm prune"
   },
   "repository": {
@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "deepmerge": "^0.2.7",
-    "fs-extra": "^0.18.2",
+    "deepmerge": "^0.2.10",
+    "fs-extra": "^0.30.0",
     "glob": "^5.0.5",
     "gm": "^1.17.0",
     "node-resemble-js": "0.0.4",
@@ -45,7 +45,7 @@
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-eslint": "^18.0.0",
+    "grunt-eslint": "^18.1.0",
     "grunt-npm": "0.0.2",
     "istanbul": "^0.3.13",
     "load-grunt-tasks": "^3.4.1",

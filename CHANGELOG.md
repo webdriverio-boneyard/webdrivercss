@@ -1,5 +1,7 @@
 ## Release History
 
+* 3rd party dependencies update
+
 ## v1.1.10 (2015-12-19)
 * Adjust scrolling to better support sticky headers (#131)
 * Add option to tweak node-resemble-js image comparison (#121)
