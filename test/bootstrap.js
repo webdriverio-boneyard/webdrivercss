@@ -4,7 +4,6 @@
 WebdriverIO  = require('webdriverio');
 WebdriverCSS = require('../index.js');
 fs = require('fs-extra');
-gm = require('gm');
 glob = require('glob');
 async  = require('async');
 should = require('chai').should();
