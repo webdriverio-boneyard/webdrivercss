@@ -3,7 +3,7 @@ WebdriverCSS [![Version](http://img.shields.io/badge/version-v1.1.10-brightgreen
 
 ---
 
-> **_Note:_ WebdriverCSS isn't yet compatible with WebdriverIO `v3.0`.** We are currently working on it to make that happen soon. So stay tuned.
+> **_Note:_ WebdriverCSS isn't yet compatible with WebdriverIO `v3.0` and is not longer maintained. ** If anyone wants to take ownershipt of this project I am happy to assign push permissions.
 
 ---
 
