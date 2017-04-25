@@ -169,6 +169,9 @@ available:
 * **ignore** `String`<br>
   can be used to ignore color differences or differences caused by antialising artifacts in the screenshot comparison
 
+* **onScreenWidthChange** `function`<br>
+  can be used to make changes to the page after the screen width has been changed. The webdriverio instance is passed to the function.
+
 The following paragraphs will give you a more detailed insight how to use these options properly.
 
 ### Let your test fail when screenshots differ
@@ -187,7 +190,10 @@ describe('my website should always look the same',function() {
             .url('http://www.example.org')
             .webdrivercss('header', {
                 name: 'header',
-                elem: '#header'
+                elem: '#header',
+                onScreenWidthChange: function(browser) {
+
+                }
             }, function(err,res) {
                 assert.ifError(err);
 

@@ -20,6 +20,7 @@
     "fs-extra": "^0.18.2",
     "glob": "^5.0.5",
     "gm": "^1.17.0",
+    "json-fn": "^0.60.0",
     "node-resemble-js": "0.0.4",
     "request": "^2.55.0",
     "rimraf": "^2.3.2",
