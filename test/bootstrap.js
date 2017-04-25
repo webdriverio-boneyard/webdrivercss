@@ -31,7 +31,11 @@ afterHook = function(done) {
      * close browser and clean up created directories
      */
     async.parallel([
-        function(done) { browser.end(done); },
+        function(done) {
+            browser.end()
+                .then(done.bind(null, null))
+                .catch(done);
+        },
         function(done) { fs.remove(failedComparisonsRootDefault,done); },
         function(done) { fs.remove(screenshotRootDefault,done); },
         function(done) { fs.remove(failedComparisonsRootCustom,done); },

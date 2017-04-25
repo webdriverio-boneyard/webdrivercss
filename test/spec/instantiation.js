@@ -2,8 +2,8 @@
 
 describe('WebdriverCSS plugin as WebdriverIO enhancement', function() {
 
-    before(function(done) {
-        this.browser = WebdriverIO.remote(capabilities).init(done);
+    before(function() {
+        return this.browser = WebdriverIO.remote(capabilities).init();
     });
 
     it('should not exist as command in WebdriverIO instance without initialization', function() {
@@ -32,9 +32,9 @@ describe('WebdriverCSS plugin as WebdriverIO enhancement', function() {
     it('should contain some default values', function() {
         var plugin = WebdriverCSS.init(this.browser);
 
-        expect(plugin).to.have.property('screenshotRoot').to.equal('webdrivercss');
-        expect(plugin).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
-        expect(plugin).to.have.property('misMatchTolerance').to.equal(0.05);
+        expect(plugin.options).to.have.property('screenshotRoot').to.equal('webdrivercss');
+        expect(plugin.options).to.have.property('failedComparisonsRoot').to.equal('webdrivercss/diff');
+        expect(plugin.options).to.have.property('misMatchTolerance').to.equal(0.05);
 
     });
 
@@ -45,9 +45,9 @@ describe('WebdriverCSS plugin as WebdriverIO enhancement', function() {
             misMatchTolerance: 50
         });
 
-        expect(plugin).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
-        expect(plugin).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
-        expect(plugin).to.have.property('misMatchTolerance').to.equal(50);
+        expect(plugin.options).to.have.property('screenshotRoot').to.equal('__screenshotRoot__');
+        expect(plugin.options).to.have.property('failedComparisonsRoot').to.equal('__failedComparisonsRoot__');
+        expect(plugin.options).to.have.property('misMatchTolerance').to.equal(50);
     });
 
     it('should have a created "screenshotRoot" folder after initialization', function(done) {

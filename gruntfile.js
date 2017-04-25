@@ -11,7 +11,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: './lib',
-                    src: ['*.js'],
+                    src: ['**/*.js'],
                     dest: 'build',
                     ext: '.js'
                 }]
@@ -55,7 +55,6 @@ module.exports = function (grunt) {
     })
 
     require('load-grunt-tasks')(grunt)
-    grunt.loadTasks('build')
     grunt.registerTask('default', ['build'])
     grunt.registerTask('build', 'Build grunt-webdriver', function () {
         grunt.task.run([
